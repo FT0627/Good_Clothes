@@ -1,24 +1,39 @@
-# README
+# Good clothes
+​
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+​地図上で店を選択し、その店で購入した服を投稿・閲覧できる投稿サイト
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+​私は服が好きで様々な服屋を巡るのだが、<br>
+ かなりの数が存在する店の中から、好みの服が売られている店を効率よく発見できなく困っていた。<br>
+ そこで、同様の悩みを抱えている友人と話している時に、<br>
+ 他人がどこの店でどのような服を買ったのかを投稿できるSNSがあれば便利だと考えた。
+ 旅行などで時間が制限されている人にとっても、非常に有効的であると考えこのテーマを選択した。
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+- 服が好きで、日々多くの服屋を巡っている人
+- 効率よく多くの服屋を巡りたい人
+​
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+- 気になるエリアで服屋を探す時
+- 好みの服が販売されている店を見つけたい時
+- 購入したお気に入りの服を投稿するとき
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- フリーイラスト素材で以下を使用
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 実装機能リスト
+https://docs.google.com/spreadsheets/d/1_yTMDCOhqZlSM4Ork3u1S69LGIxyF25nby4d4oUEgMo/edit?usp=sharing
