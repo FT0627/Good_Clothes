@@ -1,0 +1,2 @@
+class PostColor < ApplicationRecord
+end
