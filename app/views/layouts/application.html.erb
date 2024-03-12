@@ -2,15 +2,78 @@
 <html>
   <head>
     <title>GoodClothes</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/4d968897e3.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+        <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/">
+            <i class="fa-regular fa-thumbs-up"></i>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul  class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "マイページ",root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "投稿", root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "店舗登録", root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark" %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "ユーザー一覧", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "投稿一覧", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "カラー一覧", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "カテゴリー一覧", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark" %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "Top", root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "About", root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_user_registration_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>
+                </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>
