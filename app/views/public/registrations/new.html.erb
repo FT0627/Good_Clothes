@@ -1,29 +1,32 @@
-<h2>Sign up</h2>
+<div class="container py-5">
+  <div class="card w-75 mx-auto my-4 shadow-lg text-center">
+  <h2 class="p-3"><strong>アカウント作成</strong></h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+  
+    <div class="field mb-3">
+      <%= f.label :email, "メールアドレス" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width:50%", placeholder: "メールアドレスを入力" %>
+    </div>
+  
+    <div class="field mb-3">
+      <%= f.label :password, "パスワード" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 文字以上で入力)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", style: "width:50%", placeholder: "メールアドレスを入力" %>
+    </div>
+  
+    <div class="field mb-3">
+      <%= f.label :password_confirmation, "パスワード(再)" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "width:50%", placeholder: "メールアドレスをもう1度入力" %>
+    </div>
+  
+    <div class="actions mb-3">
+      <%= f.submit "アカウント作成" %>
+    </div>
+  <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= link_to "既にアカウントをお持ちの方", new_user_session_path, class: "mb-4" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
