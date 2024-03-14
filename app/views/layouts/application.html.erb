@@ -39,16 +39,16 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "ユーザー一覧", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "全ユーザー", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "投稿一覧", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "カラー一覧", admin_colors_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "カラー登録", admin_colors_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "カテゴリー一覧", admin_categories_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "カテゴリー登録", admin_categories_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark" %>

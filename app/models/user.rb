@@ -8,8 +8,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :relationsihps
   has_many :shops
-  has_and_belongs_to_many :colors
-  
+
   has_one_attached :profile_image
 
   validates :name, presence: true
@@ -19,9 +18,9 @@ class User < ApplicationRecord
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end 
+    end
     profile_image.variant(resize_to_limit: [width, height]).processed
-  end 
+  end
 
 
   GUEST_USER_EMAIL = "guest@example.com"

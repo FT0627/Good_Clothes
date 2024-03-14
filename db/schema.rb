@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2024_03_10_154124) do
 
   create_table "post_colors", force: :cascade do |t|
     t.integer "clothes_id", null: false
-    t.integer "color", null: false
+    t.integer "color_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

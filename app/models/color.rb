@@ -1,5 +1,6 @@
 class Color < ApplicationRecord
-  has_and_belongs_to_many :users
+ has_many :post_colors, dependent: :destroy
+ has_many :colors, through: :post_color
   
   validates :name, presence: true
 end
