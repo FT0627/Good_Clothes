@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h5 class="my-3"><strong>店舗一覧</strong></h5>
+      <div>
+        <table class="table">
+          <% @shops.each do |shop| %>
+          <tr>
+            <td><%= link_to shop.name, shop_path(shop) %></td>
+            <td><%= shop.prefecture %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
