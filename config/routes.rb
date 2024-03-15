@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get 'users/information/edit', to: 'users#edit', as: :edit
     patch 'users/information', to: 'users#update'
     delete 'users/information', to: 'users#destroy'
+    resources :shops, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

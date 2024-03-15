@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 2024_03_10_154124) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
-    t.string "prefecture", null: false
-    t.string "address", null: false
+    t.string "prefecture", default: "0", null: false
+    t.integer "address", null: false
     t.text "discription", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

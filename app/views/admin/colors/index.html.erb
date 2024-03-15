@@ -19,6 +19,7 @@
         <% @colors.each do |color| %>
         <tr>
           <td><%= color.name %></td>
+          <td><%= link_to '編集', edit_admin_color_path(color), class: "btn btn-primary" %></td>
           <td><%= link_to '削除', admin_color_path(color), method: :delete, "data-confirm" => "このカラーを削除しますか？", class: "btn btn-danger" %></td>
         </tr>
         <% end %>
