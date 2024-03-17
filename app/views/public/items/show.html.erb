@@ -1,0 +1,16 @@
+<div class="container">
+  <h4 class="my-3">投稿内容</h4>
+  <div class="ml-3">
+    <label><strong>店名</strong></label>：
+    <%= link_to @item.shop.name, shop_path(@item.shop_id) %>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <%= @item.category.name %>
+    </div>
+    <div class="col-lg-5">
+      <%= image_tag @item.get_images(300,300) %>
+    </div>
+    <div class="col-lg-3">コメント</div>
+  </div>
+</div>

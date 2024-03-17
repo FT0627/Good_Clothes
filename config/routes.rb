@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     patch 'users/information', to: 'users#update'
     delete 'users/information', to: 'users#destroy'
     resources :shops, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :items, only: [:new, :create, :show, :destroy, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -58,23 +58,22 @@ ActiveRecord::Schema.define(version: 2024_03_10_154124) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clothes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
-    t.integer "color_id", null: false
-    t.string "star", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "colors", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "items", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "post_colors", force: :cascade do |t|
-    t.integer "clothes_id", null: false
+    t.integer "item_id", null: false
     t.integer "color_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -82,14 +81,14 @@ ActiveRecord::Schema.define(version: 2024_03_10_154124) do
 
   create_table "post_comments", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "clothes_id", null: false
+    t.integer "item_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_tags", force: :cascade do |t|
-    t.integer "clothes_id", null: false
+    t.integer "item_id", null: false
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
