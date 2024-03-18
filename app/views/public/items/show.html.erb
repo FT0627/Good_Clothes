@@ -1,15 +1,27 @@
 <div class="container">
-  <h4 class="my-3">投稿内容</h4>
-  <div class="ml-3">
-    <label><strong>店名</strong></label>：
-    <%= link_to @item.shop.name, shop_path(@item.shop_id) %>
+  <h2 class="my-3 mb-3">投稿内容</h2>
+  <%= link_to "編集", edit_item_path(@item), class: "btn btn-primary my-3" %>
+  <div class="row mb-5">
+    <h3><labal><strong>店名：</strong></labal>
+    　<%= link_to @item.shop.name, shop_path(@item.shop_id) %>
+    </h3>
   </div>
-  <div class="row">
-    <div class="col-lg-4">
-      <%= @item.category.name %>
+
+  <div class="row ml-3">
+    <div class="col-lg-4 mb-3">
+      <h3><label><strong>カテゴリー：</strong></label>
+      　<%= @item.category.name %>
+      </h3>
+      <h3><label><strong>カラー：</strong></label>
+        <% @item.colors.each do |color| %>
+          <%= color.name %>
+        <% end %>
+      </h3>
     </div>
     <div class="col-lg-5">
-      <%= image_tag @item.get_images(300,300) %>
+      <% @item.item_images.each do |item_image| %>
+        <%= image_tag item_image, size: "180x240" %>
+      <% end %>
     </div>
     <div class="col-lg-3">コメント</div>
   </div>

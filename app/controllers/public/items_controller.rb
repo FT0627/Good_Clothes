@@ -22,6 +22,7 @@ class Public::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @colors = Color.all
     if @item.user == current_user
       render :edit
     else
@@ -31,8 +32,8 @@ class Public::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if item.update(item_params)
-      redirect_to item_parh(@item)
+    if @item.update(item_params)
+      redirect_to item_path(@item)
     else
       render :edit
     end
@@ -47,6 +48,6 @@ class Public::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:user_id, :shop_id, :category_id, :images, color_ids: [])
+    params.require(:item).permit(:user_id, :shop_id, :category_id, color_ids: [], item_images: [])
   end
 end
