@@ -21,8 +21,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
+    get "search_tag" => "homes#search_tag"
     get 'home/about', to: 'homes#about', as: :about
-    get 'users/my_page', to: 'users#show', as: :my_page
+    resources :users, only: :show
     get 'users/information/edit', to: 'users#edit', as: :edit
     patch 'users/information', to: 'users#update'
     delete 'users/information', to: 'users#destroy'

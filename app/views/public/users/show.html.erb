@@ -12,10 +12,20 @@
       <div>
       <%= @user.email %>
       </div>
-      <div>
-      <%= link_to "編集", edit_path, class: "btn btn-primary" %>
+      <% unless @user.guest_user? %>
+        <div>
+        <%= link_to "編集", edit_path(@user), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-5">
+      <div class="row d-flex flex-wrap">
+        <% current_user.items.each do |item| %>
+          <%= link_to item_path(item) do %>
+          <%= image_tag item.item_images[0], size: "210x280" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
-    <div class="col-lg-5">投稿一覧(4枚)</div>
   </div>
 </div>

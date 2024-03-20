@@ -9,7 +9,9 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
+    tag_list = params[:item][:name].split(',')
     if @item.save
+      @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
       render :new
