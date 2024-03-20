@@ -20,11 +20,13 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @tag = @item.tags
   end
 
   def edit
     @item = Item.find(params[:id])
     @colors = Color.all
+    @tag_list = @item.tags.pluck(:name).join(',')
     if @item.user == current_user
       render :edit
     else
@@ -34,7 +36,9 @@ class Public::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    tag_list = params[:item][:name].split(',')
     if @item.update(item_params)
+      @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
       render :edit

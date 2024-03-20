@@ -18,7 +18,8 @@
     </div>
 
     <div class="field mb-3">
-      タグ
+      <%= f.label :name, "タグ(','で複数登録可能)" %><br>
+      <%= f.text_field :name, value: @tag_list %>
     </div>
 
     <div class="field mb-3">

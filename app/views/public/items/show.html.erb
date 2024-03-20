@@ -17,6 +17,11 @@
           <%= color.name %>
         <% end %>
       </h3>
+      <div>
+        <% @tag.each do |tag| %>
+          #<%= link_to tag.name, root_path(tag_id: tag.id) %>
+        <% end %>
+      </div>
     </div>
     <div class="col-lg-5">
       <% @item.item_images.each do |item_image| %>
