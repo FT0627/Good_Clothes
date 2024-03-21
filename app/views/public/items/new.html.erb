@@ -4,7 +4,7 @@
   <%= form_with model: @item do |f| %>
     <div class="field mb-3">
       <%= f.label :shop_id, "店舗" %><br>
-      <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :shop_display) %>
+      <%= f.select :shop_id, options_from_collection_for_select(current_user.shops.all, :id, :shop_display) %>
     </div>
 
     <div class="field mb-3">

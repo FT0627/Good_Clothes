@@ -1,9 +1,9 @@
 <div class="container">
   <h2 class="my-3 mb-3">投稿内容</h2>
-  <%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "このユーザーを本当に削除しますか？", class: "btn btn-danger my-3" %>
+  <%= link_to "削除", admin_item_path(@item), method: :delete, "data-confirm" => "この投稿を本当に削除しますか？", class: "btn btn-danger my-3" %>
   <div class="row mb-5">
     <h3><labal><strong>店名：</strong></labal>
-    　<%= link_to @item.shop.name, admin_shop_path(@item.shop_id) %>
+    　<%= link_to @item.shop.name, shop_path(@item.shop_id) %>
     </h3>
   </div>
 

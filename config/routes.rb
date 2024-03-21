@@ -15,8 +15,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
+    resources :users, only: :show
+    delete 'users/information', to: 'users#destroy'
     resources :categories, only: [:index, :create, :update, :destroy, :edit]
     resources :colors, only: [:index, :create, :update, :destroy, :edit]
+    resources :items, only: [:show, :destroy]
+    resources :shops, only: [:show, :index, :edit, :update, :destroy]
   end
 
   scope module: :public do

@@ -7,10 +7,13 @@
     <div class="col-lg-2 side-bar">
       <h3 class="my-3">タグ一覧</h3>
       <% @tags.each do |tag| %>
-      <div class="col-lg-4">
-        #<%= link_to tag.name, root_path(tag_id: tag.id) %>
-        <%= "(#{tag.items.count})" %>
-      </div>
+        <% if tag.items.present? %>
+        <div class="col-lg-4">
+          #<%= link_to tag.name, root_path(tag_id: tag.id) %>
+          <%= "(#{tag.items.count})" %>
+        </div>
+        <% end %>
+        <!--タグが全て残った状態-->
       <% end %>
     </div>
     <div class="col-lg-10">

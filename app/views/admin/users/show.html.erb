@@ -1,7 +1,7 @@
 <div class="container">
 <h3 class="my-3">ユーザー詳細</h3>
   <div class="row mx-auto">
-    <div class="col-lg-5 d-flex flex-column mb-3">
+    <div class="col-lg-6 d-flex flex-column mb-3">
       <%= image_tag @user.get_profile_image(300,300) %>
       <div>
       フォロー・フォロワー
@@ -12,18 +12,18 @@
       <div>
       <%= @user.email %>
       </div>
-      <% unless @user.guest_user? %>
-        <div>
-        <%= link_to "編集", edit_path(@user), class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      <div>
+        <%= link_to "アカウント削除", admin_users_information_path(id: @user.id), method: :delete, "data-confirm" => "このユーザーを本当に削除しますか？", class: "btn btn-danger" %>
+      </div>
     </div>
     <div class="col-lg-5">
       <div class="row d-flex flex-wrap">
-        <% current_user.items.each do |item| %>
-          <%= link_to item_path(item) do %>
+        <% @items.each do |item| %>
+
+          <%= link_to admin_item_path(item) do %>
           <%= image_tag item.item_images[0], size: "210x280" %>
           <% end %>
+
         <% end %>
       </div>
     </div>
