@@ -11,6 +11,16 @@ class Admin::ColorsController < ApplicationController
     @colors = Color.all
     @color = Color.new
   end
+  
+  def edit
+    @color = Color.find(params[:id])
+  end
+  
+  def update
+    color = Color.find(params[:id])
+    color.update(color_params)
+    redirect_to colors_path
+  end
 
   def destroy
     @color = Color.find(params[:id])
