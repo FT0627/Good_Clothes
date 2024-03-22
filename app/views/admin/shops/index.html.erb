@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h5 class="page-title my-3"><strong>店舗一覧</strong></h5>
+      <div>
+        <table class="table">
+          <% @shops.each do |shop| %>
+          <tr>
+            <td>
+              <%= image_tag shop.user.get_profile_image(100,100) %>
+              <%= link_to shop.user.name, admin_user_path(shop.user.id) %>
+            </td>
+            <td><%= link_to shop.name, admin_shop_path(shop) %></td>
+            <td><%= shop.prefecture %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

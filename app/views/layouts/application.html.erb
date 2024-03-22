@@ -32,7 +32,7 @@
                   <%= link_to "投稿", new_item_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "店舗登録", new_shop_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "店舗一覧", shops_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark" %>
@@ -42,7 +42,7 @@
                   <%= link_to "全ユーザー", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "投稿一覧", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "店舗一覧", admin_shops_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "カラー登録", admin_colors_path, class: "mr-2 btn btn-outline-dark" %>

@@ -1,0 +1,21 @@
+<div class="container">
+  <h4 class="my-3"><strong>店舗情報</strong></h4>
+  <div>
+    <%= link_to "編集", edit_admin_shop_path(@shop), class: "btn btn-primary" %>
+  </div>
+    
+  <div class="row">
+    <div class="col-lg-5 mx-auto">
+      <div class="my-3">map</div>
+      <div>
+        <%= @shop.prefecture %>
+        <%= @shop.address %>
+      </div>
+    </div>
+    <div class="col-lg-5 mx-auto">
+      <h3 class="my-3"><%= @shop.name %></h3>
+      <div>画像</div>
+      <div><%= @shop.discription %></div>
+    </div>
+  </div>
+</div>
