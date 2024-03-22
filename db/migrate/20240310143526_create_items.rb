@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.integer :user_id, null: false
       t.integer :shop_id, null: false
       t.integer :category_id, null: false
+      t.string :star
       t.timestamps
     end
   end
