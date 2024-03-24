@@ -1,0 +1,68 @@
+  <%= form_with model: @item do |f| %>
+    <% if item.id.nil? %>
+      <div class="form_group" id="star">
+        <%= f.label :star, "今回の評価" %>
+        <%= hidden_field :star, id: :review_star, class: "form_control" %>
+        <div id="post_raty"></div>
+      </div>
+      <script>
+        $(document).on('turbolinks:load', function() {
+          let elem = document.querySelector('#post_raty');
+          if (elem == null) return;
+          
+          elem.innerHTML = ""
+          let opt = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            scoreName: 'item[star]',
+          };
+          raty(elem, opt);
+        });
+      </script>
+    <% else %>
+      <div class="form_group">
+        <%= render partial: "display_star", locals: {item: @item} %>
+      </div>
+    <% end %>
+  
+    <div class="form_group mb-3">
+      <%= f.label :shop_id, "店舗" %><br>
+      <%= f.select :shop_id, options_from_collection_for_select(current_user.shops.all, :id, :shop_display), class: "form_control" %>
+    </div>
+
+    <div class="form_group mb-3">
+      <%= f.label :category_id, "カテゴリー" %><br>
+      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), class: "form_control" %>
+    </div>
+
+    <div class="form_group mb-3">
+      <%= f.label :item_images, "投稿写真" %><br>
+      <%= f.file_field :item_images, multiple: true, placeholder: "投稿写真", accept: "image/*", class: "form_control" %>
+    </div>
+
+
+    <div class="form_group mb-3">
+      <%= f.label :name, "タグ(','で複数登録可能)" %><br>
+      <%= f.text_field :name, value: @tag_list, class: "form_control" %>
+    </div>
+
+    <div class="form_group mb-3">
+      <%= f.label :color_ids, "アイテムカラー(複数選択可能)" %>
+      <div class="d-flex flex-row flex-wrap ">
+        <%= f.collection_check_boxes :color_ids, @colors, :id, :name do |b| %>
+        <div class="mx-2 mb-2">
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="actions mb-3">
+      <% if f.object.new_record? %>
+        <%= f.submit "投稿", class: "btn btn-primary" %>
+      <% else %>
+        <%= f.submit "変更を保存", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>

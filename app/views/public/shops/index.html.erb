@@ -6,17 +6,15 @@
         <table class="table">
           <% @shops.each do |shop| %>
           <tr>
-            <td>
-              <%= image_tag shop.user.get_profile_image(100,100) %>
-              <%= link_to shop.user.name, user_path(shop.user.id) %>
-            </td>
-            <td><%= link_to shop.name, shop_path(shop) %>：
-                <%= shop.prefecture %>
-            </td>
+            <td><%= link_to shop.name, shop_path(shop) %></td>
+            <td><%= shop.prefecture %></td>
           </tr>
           <% end %>
         </table>
       </div>
     </div>
+  </div>
+  <div>
+    <%= link_to "MY店舗を登録", new_shop_path, class: "btn btn-primary" %>
   </div>
 </div>

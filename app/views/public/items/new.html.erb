@@ -1,44 +1,8 @@
 <div class="container py-5">
   <div class="card w-75 mx-auto my-4 shadow-lg text-center">
-      <h2 class="p-3"><strong>投稿</strong></h2>
-  <%= form_with model: @item do |f| %>
-    <div class="field mb-3">
-      <%= f.label :shop_id, "店舗" %><br>
-      <%= f.select :shop_id, options_from_collection_for_select(current_user.shops.all, :id, :shop_display) %>
-    </div>
+  <h2 class="p-3"><strong>投稿</strong></h2>
 
-    <div class="field mb-3">
-      <%= f.label :category_id, "カテゴリー" %><br>
-      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
-    </div>
-
-    <div class="field mb-3">
-      <%= f.label :item_images, "投稿写真" %><br>
-      <%= f.file_field :item_images, multiple: true, placeholder: "投稿写真", accept: "image/*" %>
-    </div>
-
-
-    <div class="field mb-3">
-      <%= f.label :name, "タグ(','で複数登録可能)" %><br>
-      <%= f.text_field :name, value: @tag_list %>
-    </div>
-
-    <div class="field mb-3">
-      <%= f.label :color_ids, "アイテムカラー(複数選択可能)" %>
-      <div class="d-flex flex-row flex-wrap ">
-        <%= f.collection_check_boxes :color_ids, @colors, :id, :name do |b| %>
-        <div class="mx-2 mb-2">
-          <%= b.check_box %>
-          <%= b.label %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="actions mb-3">
-      <%= f.submit "登録", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  <%= render partial: 'form',  locals: {item: @item} %>
 
   <%= link_to "投稿一覧", root_path, class: "mb-4" %>
   <!--投稿ページに飛ぶ-->

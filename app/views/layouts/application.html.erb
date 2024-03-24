@@ -16,6 +16,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand p-3" href="/">
+            <label>Good_Clothes</label>
             <i class="fa-regular fa-thumbs-up"></i>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -32,7 +33,7 @@
                   <%= link_to "投稿", new_item_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "店舗一覧", shops_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "MY店舗", shops_path, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark" %>

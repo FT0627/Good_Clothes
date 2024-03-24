@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2024_03_10_154124) do
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
     t.integer "category_id", null: false
-    t.string "star"
+    t.string "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

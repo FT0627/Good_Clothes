@@ -16,7 +16,7 @@ class Public::ShopsController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     @shops = @user.shops.all
   end
 
