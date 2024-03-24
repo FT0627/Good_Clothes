@@ -25,9 +25,35 @@
       <div class="row">
         <% @items.each do |item| %>
         <div class="col-lg-3">
-          <%= link_to item_path(item) do %>
-          <%= image_tag item.item_images[0], size: "180x240" %>
-          <% end %>
+        <div class="card">
+            <div class="card-header">
+              <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= link_to item.user.name, user_path(item.user) %>
+            </div>
+            <%= link_to item_path(item) do %>
+            <%= image_tag item.item_images[0], size: "180x240", class: "card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <%= link_to item.shop.name, shop_path(item.shop.id) %>
+              <div id="star_<%= item.id %>"></div>
+                <script>
+                  $(document).on('turbolinks:load', function(){
+                    let elem = document.querySelector('#star_<%= item.id %>');
+                    if (elem == null) return;
+
+                    elem.innerHTML = "";
+                    let opt = {
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      starHalf: "<%= asset_path('star-half.png') %>",
+                      score: "<%= item.star %>",
+                      readOnly: true,
+                    };
+                    raty(elem, opt);
+                  });
+                </script>
+            </div>
+        </div>
         </div>
         <% end %>
       </div>
