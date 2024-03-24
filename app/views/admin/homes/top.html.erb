@@ -7,9 +7,7 @@
           <div class="card">
             <%= image_tag user.get_profile_image(300,300) %>
             <div class="card-body">
-            <%= link_to admin_user_path(user) do %>
-              <p class="card-title"><%= user.name %></p>
-            <% end %>
+              <p class="card-title"><%= link_to user.name, admin_user_path(user) %></p>
             </div>
           </div>
         </div>

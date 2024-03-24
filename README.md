@@ -21,7 +21,6 @@
 ​
 ### 主な利用シーン
 <!--どのような時に使うのかの状況を記載すること-->
-- 気になるエリアで服屋を探す時
 - 好みの服が販売されている店を見つけたい時
 - 購入したお気に入りの服を投稿するとき
 ​
@@ -52,6 +51,7 @@ https://docs.google.com/spreadsheets/d/1Iz7Agv_OdwcKpuwJWnBlDMZgkKzsPqTihH6yAL2o
 ## 使用素材
 - フリー素材として以下を使用
   - O-DAN(https://o-dan.net/ja/) 
+  - Font Awesome(https://fontawesome.com/)
   
 ※このアプリに掲載する服の画像については著作権配慮のため、<br>
 　テストデータとしてフリー素材を使用しています。

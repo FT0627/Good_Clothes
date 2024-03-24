@@ -1,33 +1,51 @@
 <div class="container">
-  <h2 class="my-3 mb-3">投稿内容</h2>
-  <%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "このユーザーを本当に削除しますか？", class: "btn btn-danger my-3" %>
+  <h3 class="page-title my-3 mb-3">投稿内容</h3>
+  <%= link_to "編集", edit_item_path(@item), class: "btn btn-primary my-3" %>
   <div class="row mb-5">
-    <h3><labal><strong>店名：</strong></labal>
-    　<%= link_to @item.shop.name, admin_shop_path(@item.shop_id) %>
-    </h3>
+    <div class="col">
+      <div class="row mb-2">
+        <h3>店名<i class="fa-solid fa-shop"></i>：
+        　<%= link_to @item.shop.name, admin_shop_path(@item.shop_id) %>
+        </h3>
+      </div>
+      <div class="row d-flex align-items-center">
+        <%= link_to user_path(@item.user.id) do %>
+          <%= image_tag @item.user.get_profile_image(100,100), class: "mr-3" %>
+        <% end %>
+        <%= render partial: "display_star", locals: {item: @item} %>
+      </div>
+    </div>
   </div>
 
   <div class="row ml-3">
     <div class="col-lg-4 mb-3">
-      <h3><label><strong>カテゴリー：</strong></label>
-      　<%= @item.category.name %>
-      </h3>
-      <h3><label><strong>カラー：</strong></label>
+      <div class="mb-3">
+        <label><h4>カテゴリー<i class="fa-solid fa-shirt"></i></h4></label><br>
+        <%= @item.category.name %>
+      </div>
+      
+      <div class="mb-3">
+        <label><h4>カラー<i class="fa-solid fa-palette"></i></h4></label><br>
         <% @item.colors.each do |color| %>
           <%= color.name %>
         <% end %>
-      </h3>
+      </div>
+      
       <div>
         <% @tag.each do |tag| %>
-          #<%= link_to tag.name, root_path(tag_id: tag.id) %>
+          <i class="fa-solid fa-hashtag">
+            <%= link_to tag.name, root_path(tag_id: tag.id) %>
+          </i>
         <% end %>
       </div>
     </div>
+    
     <div class="col-lg-5">
       <% @item.item_images.each do |item_image| %>
         <%= image_tag item_image, size: "180x240" %>
       <% end %>
     </div>
+    
     <div class="col-lg-3">コメント</div>
   </div>
 </div>
