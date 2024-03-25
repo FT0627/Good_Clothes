@@ -1,7 +1,7 @@
-<div id="star_<%= @item.id %>"></div>
+<div id="star_<%= item.id %>"></div>
 <script>
   $(document).on('turbolinks:load', function(){
-    let elem = document.querySelector('#star_<%= @item.id %>');
+    let elem = document.querySelector('#star_<%= item.id %>');
     if (elem == null) return;
     
     elem.innerHTML = "";

@@ -3,13 +3,13 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :shop
 
-  has_many :post_comments
+  has_many :post_comments, dependent: :destroy
 
   has_many :post_colors, dependent: :destroy
   has_many :colors, through: :post_colors
 
   has_many :post_tags, dependent: :destroy
-  has_many :tags, through: :post_tags
+  has_many :tags, through: :post_tags, dependent: :destroy
   
   attribute :name
 

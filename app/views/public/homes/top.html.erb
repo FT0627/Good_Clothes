@@ -5,7 +5,7 @@
 <div class="container text-center">
   <div class="row ">
     <div class="col-lg-3 side-bar">
-      <h3 class="my-3">タグ</h3>
+      <h3 class="my-3">タグ<i class="fa-solid fa-tag"></i></h3>
       <% @tags.each do |tag| %>
         <% if tag.items.present? %>
         <div class="row d-inline-flex">
@@ -34,24 +34,11 @@
             <%= image_tag item.item_images[0], size: "180x240", class: "card-img-top" %>
             <% end %>
             <div class="card-body">
+              <labal><%= item.shop.prefecture %>｜</labal>
               <%= link_to item.shop.name, shop_path(item.shop.id) %>
-              <div id="star_<%= item.id %>"></div>
-                <script>
-                  $(document).on('turbolinks:load', function(){
-                    let elem = document.querySelector('#star_<%= item.id %>');
-                    if (elem == null) return;
-
-                    elem.innerHTML = "";
-                    let opt = {
-                      starOn: "<%= asset_path('star-on.png') %>",
-                      starOff: "<%= asset_path('star-off.png') %>",
-                      starHalf: "<%= asset_path('star-half.png') %>",
-                      score: "<%= item.star %>",
-                      readOnly: true,
-                    };
-                    raty(elem, opt);
-                  });
-                </script>
+              
+              <%= render partial: "public/items/display_star", locals: {item: item} %>
+              
             </div>
         </div>
         </div>

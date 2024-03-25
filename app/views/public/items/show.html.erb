@@ -46,6 +46,25 @@
       <% end %>
     </div>
     
-    <div class="col-lg-3">コメント</div>
+    <div class="col-lg-3">
+      <div>
+        <p>コメント件数：<%= @item.post_comments.count %></p>
+        <% @item.post_comments.each do |post_comment| %>
+          <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+          <%= post_comment.user.name %>
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+          <%= post_comment.comment %>
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_with model: [@item, @post_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントする" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
