@@ -21,7 +21,7 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @tag = @item.tags
-    @post_comment = PostComment
+    @post_comment = PostComment.new
   end
 
   def edit

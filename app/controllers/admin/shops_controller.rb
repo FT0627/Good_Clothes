@@ -16,13 +16,13 @@ class Admin::ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     @shop.update(shop_params)
-    redirect_to shop_path(@shop)
+    redirect_to admin_shop_path(@shop)
   end
   
   def destroy
     @shop = Shop.find(params[:id])
     @shop.destroy
-    redirect_to shop_path(@shop)
+    redirect_to admin_shop_path(@shop)
   end  
   
   private
