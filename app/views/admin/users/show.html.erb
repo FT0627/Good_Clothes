@@ -1,34 +1,28 @@
 <div class="container">
-<h3 class="my-3">ユーザー詳細</h3>
-  <div class="row mx-auto">
-    <div class="col-lg-6 d-flex flex-column mb-3">
-      <div>
-        <%= image_tag @user.get_profile_image(500,500) %>
+<h3 class="my-3 page-title">ユーザー詳細</h3>
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5 mb-3">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= @user.name %></li>
+            <li class="list-group-item"><%= @user.email %></li>
+          </ul>
+          <div class="card-body">
+            <%= link_to "アカウント削除", admin_users_information_path(id: @user.id), method: :delete, "data-confirm" => "このユーザーを本当に削除しますか？", class: "btn btn-danger" %>
+          </div>
+        </div>
       </div>
-      
-      <div>
-      フォロー・フォロワー
-      </div>
-      <div>
-      <%= @user.name %>
-      </div>
-      <div>
-      <%= @user.email %>
-      </div>
-      <div>
-        <%= link_to "アカウント削除", admin_users_information_path(id: @user.id), method: :delete, "data-confirm" => "このユーザーを本当に削除しますか？", class: "btn btn-danger" %>
-      </div>
-    </div>
-    <div class="col-lg-5">
-      <div class="row d-flex flex-wrap">
-        <% @items.each do |item| %>
-
-          <%= link_to admin_item_path(item) do %>
-          <%= image_tag item.item_images[0], size: "210x280" %>
+      <div class="col-lg-5">
+        <div class="row d-flex flex-wrap">
+          <% @items.each do |item| %>
+          <div class="col-lg-6">
+            <%= link_to item_path(item) do %>
+            <%= image_tag item.item_images[0], size: "210x280" %>
+            <% end %>
+          </div>
           <% end %>
-
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
 </div>

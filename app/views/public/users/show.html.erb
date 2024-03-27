@@ -1,23 +1,19 @@
 <div class="container">
 <h3 class="my-3 page-title">ユーザー詳細</h3>
-  <div>
     <div class="row d-flex justify-content-center">
-      <div class="col-lg-5 d-flex flex-column mb-3">
-        <%= image_tag @user.get_profile_image(300,300), class: "rounded-circle" %>
-        <div>
-        フォロー・フォロワー
-        </div>
-        <div>
-        <%= @user.name %>
-        </div>
-        <div>
-        <%= @user.email %>
-        </div>
-        <% unless @user.guest_user? %>
-          <div>
-          <%= link_to "編集", edit_path(@user), class: "btn btn-primary" %>
+      <div class="col-lg-5 mb-3">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= @user.name %></li>
+            <li class="list-group-item"><%= @user.email %></li>
+          </ul>
+          <div class="card-body">
+            <% unless @user.guest_user? %>
+              <%= link_to "編集", edit_path(@user), class: "btn btn-primary" %>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
       <div class="col-lg-5">
         <div class="row d-flex flex-wrap">
@@ -31,5 +27,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>

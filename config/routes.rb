@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     delete 'users/information', to: 'users#destroy'
     resources :categories, only: [:index, :create, :update, :destroy, :edit]
     resources :colors, only: [:index, :create, :update, :destroy, :edit]
-    resources :items, only: [:show, :destroy]
+    resources :items, only: [:index, :show, :destroy]
       resources :post_comments, only: [:destroy]
     resources :shops, only: [:show, :index, :edit, :update, :destroy]
   end
