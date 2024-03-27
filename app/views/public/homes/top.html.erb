@@ -23,7 +23,7 @@
       <h1 class="my-4">投稿一覧</h1>
       <div class="row">
         <% @items.each do |item| %>
-        <div class="card col-lg-3 mb-2">
+        <div class="card col-lg-3 col-md-3 col-sm-4 col-5 text-center mb-2">
             <div class="card-header">
               <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
               <%= link_to item.user.name, user_path(item.user) %>
@@ -32,7 +32,7 @@
             <%= image_tag item.item_images[0], size: "180x240", class: "card-img-top" %>
             <% end %>
             <div class="card-body">
-              <labal><%= item.shop.prefecture %>｜</labal>
+              <labal><%= link_to item.shop.prefecture, root_path(prefecture: item.shop.prefecture) %>｜</labal>
               <%= link_to item.shop.name, shop_path(item.shop.id) %>
 
               <%= render partial: "public/items/display_star", locals: {item: item} %>
