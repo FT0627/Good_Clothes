@@ -1,9 +1,9 @@
 <div class="container">
-<h3 class="my-3 page-title">ユーザー詳細</h3>
+<h3 class="my-3 page-title">ユーザー情報</h3>
     <div class="row d-flex justify-content-center">
       <div class="col-lg-5 mb-3">
         <div class="card" style="width: 18rem;">
-          <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+          <%= image_tag @user.get_profile_image(300,300) %>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><%= @user.name %></li>
             <li class="list-group-item"><%= @user.email %></li>
@@ -20,7 +20,7 @@
           <% current_user.items.each do |item| %>
           <div class="col-lg-6">
             <%= link_to item_path(item) do %>
-            <%= image_tag item.item_images[0], size: "210x280" %>
+            <%= image_tag item.item_images[0], size: "210x280", class: "mb-2" %>
             <% end %>
           </div>
           <% end %>

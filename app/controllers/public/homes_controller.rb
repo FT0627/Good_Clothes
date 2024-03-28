@@ -7,7 +7,7 @@ class Public::HomesController < ApplicationController
       @tag = Tag.find(@tag_id)
       @items = @tag.items
     elsif params[:prefecture].present?
-      @items = Shop.joins(:items).where(prefecture: Shop.prefectures[params[:prefecture].to_sym]).first.items
+      @items = Item.joins(:shop).where(shop: { prefecture: Shop.prefectures[params[:prefecture].to_s] })
     else
       @items = Item.all
     end
