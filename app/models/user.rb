@@ -6,14 +6,20 @@ class User < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  has_many :relationsihps
   has_many :shops, dependent: :destroy
+
+  has_many :fans, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :my_fans, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+  has_many :followings, through: :fans, source: :followed
+  has_many :followers, through: :my_fans, source: :follower
 
   has_one_attached :profile_image
 
   validates :name, presence: true
   validates :email, presence: true
 
+ #画像調整機能
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -22,7 +28,7 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-
+ # ゲストユーザー機能
   GUEST_USER_EMAIL = "guest@example.com"
 
     def self.guest
@@ -35,4 +41,18 @@ class User < ApplicationRecord
     def guest_user?
       email == GUEST_USER_EMAIL
     end
+
+  #フォロー機能
+  def follow(user_id)
+    my_fans.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    my_fans.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
+
 end

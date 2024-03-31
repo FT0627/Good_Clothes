@@ -5,8 +5,28 @@
         <div class="card" style="width: 18rem;">
           <%= image_tag @user.get_profile_image(300,300) %>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= @user.name %></li>
-            <li class="list-group-item"><%= @user.email %></li>
+            <li class="list-group-item">
+              <div class="row">
+                <p class="mr-3">ニックネーム</p>
+                <p><%= @user.name %></p>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <p class="mr-3">フォロー</p>
+                <%= link_to user_followings_path(@user) do %>
+                  <%= @user.followings.count %>
+                <% end %>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <p class="mr-3">フォロワー</p>
+                <%= link_to user_followers_path(@user) do %>
+                  <%= @user.followers.count %>
+                <% end %>
+              </div>
+            </li>
           </ul>
           <div class="card-body">
             <% unless @user.guest_user? %>
