@@ -27,6 +27,7 @@
             <div class="card-header">
               <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
               <%= link_to item.user.name, user_path(item.user), class: "text-dark" %>
+              <%= render partial: "public/relationships/btn", locals: {user: item.user} %>
             </div>
             <%= link_to item_path(item) do %>
             <%= image_tag item.item_images[0], size: "180x240", class: "card-img-top" %>

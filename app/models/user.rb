@@ -44,11 +44,11 @@ class User < ApplicationRecord
 
   #フォロー機能
   def follow(user_id)
-    my_fans.create(followed_id: user_id)
+    fans.create(followed_id: user_id)
   end
 
   def unfollow(user_id)
-    my_fans.find_by(followed_id: user_id).destroy
+    fans.find_by(followed_id: user_id).destroy
   end
 
   def following?(user)
