@@ -1,16 +1,4 @@
-<header class="shadow-sm">
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-brand p-3">
-        <%= link_to user_path(@item.user.id) do %>
-          <%= image_tag @item.user.get_profile_image(100,100), class: "mr-3" %>
-          <%= @item.user.name %>
-        <% end %>
-      </div>
-      <P>フォロー</P>
-    </div>
-  </nav>
-</header>
+<%= render partial: "public/users/head", locals: {user: @item.user} %>
 
 <div class="container">
   <%= link_to "編集", edit_item_path(@item), class: "btn btn-primary my-3" %>

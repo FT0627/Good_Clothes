@@ -1,3 +1,5 @@
+<%= render partial: "head", locals: {user: @user} %>
+
 <div class="container">
 <h3 class="my-3 page-title">ユーザー情報</h3>
     <div class="row d-flex justify-content-center">
@@ -37,8 +39,8 @@
       </div>
       <div class="col-lg-5">
         <div class="row d-flex flex-wrap">
-          <% current_user.items.each do |item| %>
-          <div class="col-lg-6">
+          <% @user.items.each do |item| %>
+          <div class="col-lg-6 mb-3">
             <%= link_to item_path(item) do %>
             <%= image_tag item.item_images[0], size: "210x280", class: "mb-2" %>
             <% end %>

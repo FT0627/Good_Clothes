@@ -28,11 +28,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "search_tag" => "homes#search_tag"
     get 'home/about', to: 'homes#about', as: :about
+
     resources :users, only: :show do
-      resources :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
     end
+
     get 'users/information/edit', to: 'users#edit', as: :edit
     patch 'users/information', to: 'users#update'
     delete 'users/information', to: 'users#destroy'

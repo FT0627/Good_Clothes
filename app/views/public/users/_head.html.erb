@@ -1,0 +1,21 @@
+<header class="shadow-sm">
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand p-3">
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100,100), class: "mr-3" %>
+          <%= user.name %>
+        <% end %>
+        <label class="ml-3">フォロー：</label>
+        <%= link_to user_followings_path(user) do %>
+          <%= user.followings.count %>
+        <% end %>|
+        <label>フォロワー：</label>
+        <%= link_to user_followers_path(user) do %>
+          <%= user.followers.count %>
+        <% end %>
+      </div>
+      <%= render partial: "public/relationships/btn", locals: {user: user} %>
+    </div>
+  </nav>
+</header>
