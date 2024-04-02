@@ -3,7 +3,7 @@
 </div>
 
 <div class="container text-center">
-  <div class="row ">
+  <div class="row text-center p-2">
     <div class="col-lg-3 side-bar">
       <h3 class="my-3">タグ<i class="fa-solid fa-tag"></i></h3>
       <div class="d-flex flex-wrap">
@@ -19,11 +19,10 @@
       <% end %>
       </div>
     </div>
-    <div class="col-lg-9">
-      <h1 class="my-4">投稿一覧</h1>
+    <div class="col-lg-9 top-images">
       <div class="row">
         <% @items.each do |item| %>
-        <div class="card col-lg-3 col-md-3 col-sm-4 col-5 text-center mb-2">
+        <div class="card m-2" style="width: 12rem;">
             <div class="card-header">
               <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
               <%= link_to item.user.name, user_path(item.user), class: "text-dark" %>

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 text-center">
+      <table class="table table-borderless">
+        <% user.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user) do %>
+              <%= image_tag user.get_profile_image(50,50) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user.name, user_path(user) %>
+          </td>
+          <td>
+            <p>
+              フォロー<%= link_to user.followings.count, user_followings_path(user) %>
+            </p>
+          </td>
+          <td>
+            <p>
+              フォロワー<%= link_to user.followers.count, user_followers_path(user) %>
+            </p>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

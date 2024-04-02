@@ -31,9 +31,7 @@
             </li>
           </ul>
           <div class="card-body">
-            <% unless @user.guest_user? %>
-              <%= link_to "編集", edit_path(@user), class: "btn btn-primary" %>
-            <% end %>
+            <%= render partial: "public/relationships/btn", locals: {user: @user} %>
           </div>
         </div>
       </div>
