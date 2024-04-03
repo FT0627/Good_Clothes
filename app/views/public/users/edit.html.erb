@@ -2,32 +2,33 @@
   <div class="card w-75 mx-auto my-4 shadow-lg text-center">
   <h3 class="my-3">ユーザー編集</h3>
   <div>
-    
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
       アカウント削除
     </button>
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">アカウントの削除</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="閉じる"></button>
           </div>
           <div class="modal-body">
             <p>一度アカウントを削除すると、<br>
-               アカウントに紐づく全ての情報が消去され二度と復元はできなくなります。<br>
+               アカウントに紐づく全ての情報が消去され<br>
+               二度と復元はできなくなります。<br>
                それでも本当にアカウントを削除しますか？
             </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
             <%= link_to "アカウント削除", users_information_path(@user), method: :delete, "data-confirm" => "削除を実行しますか？", class: "btn btn-danger" %>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
   <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
   <div class="mb-3">
