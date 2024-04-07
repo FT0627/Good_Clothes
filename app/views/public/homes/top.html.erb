@@ -20,12 +20,12 @@
       </div>
     </div>
     <div class="col-lg-9 top-images">
+      <h3 class="my-3">店内品揃えレビュー<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></h3>
       <div class="row">
         <% @items.each do |item| %>
         <div class="card m-2" style="width: 12rem;">
             <div class="card-header">
               <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
-              <%= link_to item.user.name, user_path(item.user), class: "text-dark" %>
               <%= render partial: "public/relationships/btn", locals: {user: item.user} %>
             </div>
             <%= link_to item_path(item) do %>
@@ -36,6 +36,8 @@
               <%= link_to item.shop.name, shop_path(item.shop.id), class: "text-dark" %>
 
               <%= render partial: "public/items/display_star", locals: {item: item} %>
+              <%= item.created_at.strftime('%Y/%m/%d') %>時点
+              <!--※余裕があれば現在地からの距離-->
 
             </div>
         </div>

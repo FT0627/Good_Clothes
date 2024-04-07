@@ -9,10 +9,8 @@
         　<%= link_to @item.shop.name, shop_path(@item.shop_id) %>
         </h3>
       </div>
-      <div class="row d-flex align-items-center">
-        <%= link_to user_path(@item.user.id) do %>
-          <%= image_tag @item.user.get_profile_image(100,100), class: "mr-3" %>
-        <% end %>
+      <div class="row">
+        <p>現在の品揃え：</p>
         <%= render partial: "display_star", locals: {item: @item} %>
       </div>
     </div>

@@ -6,7 +6,7 @@
 
     <div class="field mb-3">
       <label>住所</label><br />
-      <%= f.select :prefecture, Shop.prefectures.keys, {} ,{class: 'hoge'} %>
+      <%= f.select :prefecture, Shop.prefectures.keys ,{class: 'hoge'} %>
       <%= f.text_field :address, autofocus: true, style: "width:50%", placeholder: "住所"  %>
     </div>
 
