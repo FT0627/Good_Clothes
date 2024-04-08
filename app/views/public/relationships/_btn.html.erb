@@ -6,6 +6,6 @@
       <%= link_to "フォロー", user_relationships_path(user.id), method: :post, class: "badge badge-info" %>
     <% end %>
   <% else %>
-    <%= link_to "マイページ編集", edit_path(user.id), class: "badge badge-light" %>
+    <%= link_to "マイページ", edit_path(user.id), class: "badge badge-light" %>
   <% end %>
 <% end %>

@@ -3,7 +3,7 @@
 <div class="container">
 <h3 class="my-3 page-title">ユーザー情報</h3>
     <div class="row d-flex justify-content-center">
-      <div class="col-lg-5 mb-3">
+      <div class="col-lg-4 mb-3">
         <div class="card" style="width: 18rem;">
           <%= image_tag @user.get_profile_image(300,300) %>
           <ul class="list-group list-group-flush">
@@ -35,12 +35,12 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-5">
+      <div class="col-lg-7">
         <div class="row d-flex flex-wrap">
           <% @user.items.each do |item| %>
           <div class="col-lg-6 mb-3">
             <%= link_to item_path(item) do %>
-            <%= image_tag item.item_images[0], size: "210x280", class: "mb-2" %>
+            <%= image_tag item.item_images[0], size: "250x250", class: "mb-2", style: "object-fit: cover;" %>
             <% end %>
           </div>
           <% end %>

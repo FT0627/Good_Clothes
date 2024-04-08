@@ -4,9 +4,8 @@
   
   <%= render partial: "form", locals: {shop: @shop} %>
   <div class="mb-3">
-    <%= link_to "投稿する", new_item_path, class: "btn btn-primary" %>
-    |<!--投稿ページに飛ぶ-->
-    <%= link_to "店舗一覧へ戻る", shops_path, class: "btn btn-primary" %>
+    <%= link_to "店舗一覧へ戻る", shops_path, class: "badge badge-light" %>｜
+    <%= link_to "投稿する", new_item_path, class: "badge badge-light" %>
   </div>
   </div>
 </div>

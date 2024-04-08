@@ -23,13 +23,16 @@
       <h3 class="my-3">店内品揃えレビュー<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></h3>
       <div class="row">
         <% @items.each do |item| %>
-        <div class="card m-2" style="width: 12rem;">
+        <div class="col-lg-4">
+        <div class="card m-2">
             <div class="card-header">
-              <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= link_to user_path(item.user) do %>
+                <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <% end %>
               <%= render partial: "public/relationships/btn", locals: {user: item.user} %>
             </div>
             <%= link_to item_path(item) do %>
-            <%= image_tag item.item_images[0], size: "180x240", class: "card-img-top" %>
+            <%= image_tag item.item_images[0], class: "card-img-top", style: "object-fit: cover;" %>
             <% end %>
             <div class="card-body">
               <labal><%= link_to item.shop.prefecture, root_path(prefecture: item.shop.prefecture), class: "text-dark" %>｜</labal>
@@ -40,6 +43,7 @@
               <!--※余裕があれば現在地からの距離-->
 
             </div>
+        </div>
         </div>
         <% end %>
       </div>

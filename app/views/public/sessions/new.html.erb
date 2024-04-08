@@ -13,11 +13,11 @@
     </div>
 
     <div class="actions mb-3">
-      <%= f.submit "ログイン", class: "btn btn-success" %>
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
       <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary", method: :post %>
     </div>
   <% end %>
 
-  <%= link_to "アカウント作成", new_user_registration_path, class: "mb-4" %>
+  <%= link_to "アカウントを作成する方はこちら", new_user_registration_path, class: "mb-4" %>
   </div>
 </div>
