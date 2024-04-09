@@ -27,6 +27,9 @@
               <ul  class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
+                  <%= link_to "TOP", root_path, class: "mr-2 btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
                   <%= link_to "マイページ", current_user, class: "mr-2 btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item">

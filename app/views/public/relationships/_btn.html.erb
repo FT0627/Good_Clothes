@@ -8,4 +8,6 @@
   <% else %>
     <%= link_to "マイページ", edit_path(user.id), class: "badge badge-light" %>
   <% end %>
+<% else %>
+  <%= user.name %>
 <% end %>

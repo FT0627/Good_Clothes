@@ -19,7 +19,7 @@ class Admin::ColorsController < ApplicationController
   def update
     color = Color.find(params[:id])
     color.update(color_params)
-    redirect_to colors_path
+    redirect_to admin_colors_path
   end
 
   def destroy
