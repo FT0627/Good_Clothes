@@ -1,16 +1,24 @@
 <div class="container">
-  <div class="w-50">
+  <div class="w-10">
     <h1 class="my-3"><strong>カラー</strong></h1>
     <%= form_with model: @color, url: admin_colors_path do |f| %>
-      <h4 class="mb-3">カテゴリー名</h4>
+    <h4 class="mb-3">カテゴリー名</h4>
+    <div class="field mb-3">
+      <%= f.label :name, "色" %><br />
       <%= f.text_field :name, autofocus: true %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :name, "コード" %><br />
+      <%= f.text_field :code, autofocus: true %>
+    </div>
       <%= f.submit '新規登録' %>
     <% end %>
 
     <table class="mt-3 table">
       <thead>
         <tr>
-          <th><h5>カラー欄</h5></th>
+          <th>カラー名</th>
+          <th>コード</th>
           <th></th>
           <th></th>
         </tr>
@@ -19,6 +27,7 @@
         <% @colors.each do |color| %>
         <tr>
           <td><%= color.name %></td>
+          <td><%= color.code %></td>
           <td><%= link_to '編集', edit_admin_color_path(color), class: "btn btn-primary" %></td>
           <td><%= link_to '削除', admin_color_path(color), method: :delete, "data-confirm" => "このカラーを削除しますか？", class: "btn btn-danger" %></td>
         </tr>
