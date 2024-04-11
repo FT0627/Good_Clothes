@@ -2,38 +2,12 @@
   <%= flash[:notice] %>
 </div>
 
-<div class="container text-center">
-  <div class="row text-center p-2">
-    <div class="col-lg-3 side-bar">
-      <div>
-        <h5 class="my-3">タグ<i class="fa-solid fa-tag"></i></h5>
-        <div class="d-flex flex-wrap">
-        <% @tags.each do |tag| %>
-          <% if tag.items.present? %>
-            <div>
-              <i class="fa-solid fa-hashtag ml-1 d-inline-flex">
-                <%= link_to tag.name, root_path(tag_id: tag.id) %>
-                <%= "(#{tag.items.count})" %>
-              </i>
-            </div>
-          <% end %>
-        <% end %>
-        </div>
-      </div>
-      <div>
-        <h5 class="my-3">カテゴリー<i class="fa-solid fa-list"></i></h5>
-        <table class="table table-bordered">
-          <% @categories.each do |category| %>
-          <tr>
-            <td>
-              <%= link_to category.name, root_path(category_id: category.id), class: "text-dark" %>
-            </td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-    <div class="col-lg-9 top-images">
+<div class="container">
+  <div class="row">
+    
+    <%= render partial: "sidebar", locals: {tags: @tags, categories: @categories} %>
+    
+    <div class="col-lg-9 text-center">
       <h3 class="my-3">店内品揃えレビュー<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></h3>
       <div class="row">
         <% @items.each do |item| %>

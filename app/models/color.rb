@@ -3,4 +3,5 @@ class Color < ApplicationRecord
  has_many :items, through: :post_colors
 
   validates :name, presence: true
+  validates :code, presence: true
 end

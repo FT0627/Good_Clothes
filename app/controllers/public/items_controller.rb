@@ -22,6 +22,9 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @tag = @item.tags
     @post_comment = PostComment.new
+    @tags = Tag.all
+    @categories = Category.all
+
   end
 
   def edit
