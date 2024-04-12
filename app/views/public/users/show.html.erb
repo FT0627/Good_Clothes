@@ -3,11 +3,11 @@
 <div class="container">
   <div class="row">
     <%= render partial: "public/homes/sidebar", locals: {tags: @tags, categories: @categories} %>
-    <div class="col-lg-9">
-      <div class="row d-flex justify-content-center">
-        
-        <div class="col-lg-4 mb-3 mr-3">
-          <div class="card" style="width: 18rem;">
+    <div class="col-lg-9 mt-3">
+      <div class="row">
+
+        <div class="col-lg-4 p-3">
+          <div class="card" style="width: 16rem;">
             <%= image_tag @user.get_profile_image(300,300) %>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
@@ -38,19 +38,19 @@
             </div>
           </div>
         </div>
-        
-        <div class="col-lg-7">
-          <div class="row d-flex flex-wrap">
+
+        <div class="col-lg-8">
+          <div class="row p-3">
             <% @user.items.each do |item| %>
-            <div class="col-lg-6 mb-3">
-              <%= link_to item_path(item) do %>
-              <%= image_tag item.item_images[0], size: "200x200", class: "mb-2", style: "object-fit: cover;" %>
-              <% end %>
-            </div>
+              <div class="col-lg-5">
+                <%= link_to item_path(item) do %>
+                <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 border border-dark", style: "object-fit: cover;" %>
+                <% end %>
+              </div>
             <% end %>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
