@@ -1,11 +1,18 @@
 <div class="container">
-  <%= link_to "削除", admin_item_path(@item), method: :delete, "data-confirm" => "このを本当に削除しますか？", class: "btn btn-danger my-3" %>
+  <h3 class="page-title my-3 mb-3">投稿内容</h3>
+  <%= link_to "編集", edit_item_path(@item), class: "btn btn-primary my-3" %>
   <div class="row mb-5">
     <div class="col">
       <div class="row mb-2">
-        <h3><i class="fa-solid fa-shop"></i>
+        <h3>店名<i class="fa-solid fa-shop"></i>：
         　<%= link_to @item.shop.name, admin_shop_path(@item.shop_id) %>
         </h3>
+      </div>
+      <div class="row d-flex align-items-center">
+        <%= link_to user_path(@item.user.id) do %>
+          <%= image_tag @item.user.get_profile_image(100,100), class: "mr-3" %>
+        <% end %>
+        <%= render partial: "display_star", locals: {item: @item} %>
       </div>
     </div>
   </div>
@@ -16,14 +23,14 @@
         <label><h4>カテゴリー<i class="fa-solid fa-shirt"></i></h4></label><br>
         <%= @item.category.name %>
       </div>
-
+      
       <div class="mb-3">
         <label><h4>カラー<i class="fa-solid fa-palette"></i></h4></label><br>
         <% @item.colors.each do |color| %>
           <%= color.name %>
         <% end %>
       </div>
-
+      
       <div>
         <% @tag.each do |tag| %>
           <i class="fa-solid fa-hashtag">
@@ -32,13 +39,13 @@
         <% end %>
       </div>
     </div>
-
+    
     <div class="col-lg-5">
       <% @item.item_images.each do |item_image| %>
         <%= image_tag item_image, size: "180x240" %>
       <% end %>
     </div>
-
+    
     <div class="col-lg-3">
       <div>
         <p>コメント件数：<%= @item.post_comments.count %></p>
@@ -50,6 +57,12 @@
           <% if post_comment.user == current_user %>
             <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete %>
           <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_with model: [@item, @post_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントする" %>
+          <%= f.submit "送信" %>
         <% end %>
       </div>
     </div>

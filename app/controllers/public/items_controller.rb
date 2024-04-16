@@ -34,6 +34,10 @@ class Public::ItemsController < ApplicationController
     if @item.user == current_user
       render :edit
     else
+      @post_comment = PostComment.new
+      @categories = Category.all
+      @tags = Tag.all
+      @tag = @item.tags
       render :show
     end
   end
