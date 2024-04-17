@@ -4,6 +4,8 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @items = @user.items.order('id DESC').limit(4)
+    @tags = Tag.all
+    @categories = Category.all
   end
   
   def destroy

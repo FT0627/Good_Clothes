@@ -15,12 +15,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :users, only: :show
+    resources :users, only: :show do 
+        get "followings" => "relationships#followings", as: "followings"
+        get "followers" => "relationships#followers", as: "followers"
+  end 
     delete 'users/information', to: 'users#destroy'
     resources :categories, only: [:index, :create, :update, :destroy, :edit]
     resources :colors, only: [:index, :create, :update, :destroy, :edit]
-    resources :items, only: [:index, :show, :destroy]
+    resources :items, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:destroy]
+    end 
     resources :shops, only: [:show, :index, :edit, :update, :destroy]
   end
 

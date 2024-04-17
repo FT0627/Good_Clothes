@@ -1,70 +1,79 @@
-<div class="container">
-  <h3 class="page-title my-3 mb-3">投稿内容</h3>
-  <%= link_to "編集", edit_item_path(@item), class: "btn btn-primary my-3" %>
-  <div class="row mb-5">
-    <div class="col">
-      <div class="row mb-2">
-        <h3>店名<i class="fa-solid fa-shop"></i>：
-        　<%= link_to @item.shop.name, admin_shop_path(@item.shop_id) %>
-        </h3>
-      </div>
-      <div class="row d-flex align-items-center">
-        <%= link_to user_path(@item.user.id) do %>
-          <%= image_tag @item.user.get_profile_image(100,100), class: "mr-3" %>
-        <% end %>
-        <%= render partial: "display_star", locals: {item: @item} %>
-      </div>
-    </div>
-  </div>
+<%= render partial: "admin/users/head", locals: {user: @item.user} %>
 
-  <div class="row ml-3">
-    <div class="col-lg-4 mb-3">
-      <div class="mb-3">
-        <label><h4>カテゴリー<i class="fa-solid fa-shirt"></i></h4></label><br>
-        <%= @item.category.name %>
+<div class="container">
+      <div class="row mt-3 d-flex justify-content-center">
+        <div class="col-lg-5">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-touch="false", data-interval="false">
+            <div class="carousel-inner">
+              <% @item.item_images.each_with_index do |item_image, index| %>
+                <div class="carousel-item <%= 'active' if index == 0 %>">
+                  <%= image_tag item_image, class: "d-block w-100" %>
+                </div>
+              <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5 border border-dark post_detail">
+          <table class="table ">
+            <caption>☆<%= @item.created_at.strftime('%Y/%m/%d') %> 時点のレビュー☆</caption>
+              <tr>
+                <th><i class="fa-solid fa-shop"></i></th>
+                <td>
+                  <h2><strong><%= link_to @item.shop.name, admin_shop_path(@item.shop_id), class: "text-dark" %></strong></h2>
+                </td>
+              </tr>
+              <tr>
+                <th><i class="fa-regular fa-thumbs-up"></i></th>
+                <td><%= render partial: "public/items/display_star", locals: {item: @item} %></td>
+              </tr>
+              <tr>
+                <th><i class="fa-solid fa-shirt"></i></th>
+                <td>
+                  <h3><strong><%= @item.category.name %></strong></h3></td>
+              </tr>
+              <tr>
+                <th><i class="fa-solid fa-palette"></i></th>
+                <td>
+                  <% @item.colors.each do |color| %>
+                    <span style="display: inline-block; width: 20px; height: 20px; background-color: <%= color.code %>; margin-right: 5px;", class="border border-dark"></span>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><i class="fa-solid fa-tag"></i></th>
+                <td>
+                  <% @tag.each do |tag| %>
+                    <i class="fa-solid fa-hashtag">
+                      <%= tag.name %>
+                    </i>
+                  <% end %>
+                </td>
+              </tr>
+          </table>
+          <%= link_to admin_item_path(@item), method: :delete, "data-confirm" => "この投稿を本当に削除しますか？", class: "btn btn-outline-danger w-100" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
       </div>
-      
-      <div class="mb-3">
-        <label><h4>カラー<i class="fa-solid fa-palette"></i></h4></label><br>
-        <% @item.colors.each do |color| %>
-          <%= color.name %>
-        <% end %>
-      </div>
-      
-      <div>
-        <% @tag.each do |tag| %>
-          <i class="fa-solid fa-hashtag">
-            <%= link_to tag.name, root_path(tag_id: tag.id) %>
-          </i>
-        <% end %>
-      </div>
-    </div>
-    
+  <div class="row">
     <div class="col-lg-5">
-      <% @item.item_images.each do |item_image| %>
-        <%= image_tag item_image, size: "180x240" %>
+      <p>コメント件数：<%= @item.post_comments.count %></p>
+      <% @item.post_comments.each do |post_comment| %>
+        <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+        <%= post_comment.user.name %>
+        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <%= post_comment.comment %>
+        <% if post_comment.user == current_user %>
+          <%= link_to "削除", admin_item_post_comment_path(post_comment.item, post_comment), method: :delete %>
+        <% end %>
       <% end %>
     </div>
-    
-    <div class="col-lg-3">
-      <div>
-        <p>コメント件数：<%= @item.post_comments.count %></p>
-        <% @item.post_comments.each do |post_comment| %>
-          <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-          <%= post_comment.user.name %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-          <%= post_comment.comment %>
-          <% if post_comment.user == current_user %>
-            <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete %>
-          <% end %>
-        <% end %>
-      </div>
-      <div>
-        <%= form_with model: [@item, @post_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントする" %>
-          <%= f.submit "送信" %>
-        <% end %>
-      </div>
-    </div>
   </div>
-</div>

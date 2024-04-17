@@ -2,42 +2,35 @@
   <%= flash[:notice] %>
 </div>
 
-<div class="container text-center">
-  <div class="row ">
-    <div class="col-lg-3 side-bar">
-      <h3 class="my-3">タグ<i class="fa-solid fa-tag"></i></h3>
-      <div class="d-flex flex-wrap">
-      <% @tags.each do |tag| %>
-        <% if tag.items.present? %>
-          <div>
-            <i class="fa-solid fa-hashtag ml-1 d-inline-flex">
-              <%= link_to tag.name, admin_items_path(tag_id: tag.id) %>
-              <%= "(#{tag.items.count})" %>
-            </i>
-          </div>
-        <% end %>
-      <% end %>
-      </div>
-    </div>
-    <div class="col-lg-9">
-      <h1 class="my-4">投稿一覧</h1>
+<div class="container">
+  <div class="row">
+
+    <%= render partial: "public/homes/sidebar", locals: {tags: @tags, categories: @categories} %>
+
+    <div class="col-lg-9 text-center">
+      <h3 class="my-3">店内品揃えレビュー<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></h3>
       <div class="row">
         <% @items.each do |item| %>
-        <div class="card col-lg-3 mb-2">
+        <div class="col-lg-4">
+        <div class="card m-2">
             <div class="card-header">
-              <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
-              <%= link_to item.user.name, admin_user_path(item.user) %>
+              <%= link_to admin_user_path(item.user) do %>
+                <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <% end %>
             </div>
             <%= link_to admin_item_path(item) do %>
-            <%= image_tag item.item_images[0], size: "180x240", class: "card-img-top" %>
+              <%= image_tag item.item_images[0], class: "card-img-top" %>
             <% end %>
             <div class="card-body">
-              <labal><%= item.shop.prefecture %>｜</labal>
-              <%= link_to item.shop.name, admin_shop_path(item.shop.id) %>
+              <labal><%= link_to item.shop.prefecture, admin_items_path(prefecture: item.shop.prefecture), class: "text-dark" %>｜</labal>
+              <%= link_to item.shop.name, admin_shop_path(item.shop.id), class: "text-dark" %>
 
               <%= render partial: "public/items/display_star", locals: {item: item} %>
+              <%= item.created_at.strftime('%Y/%m/%d') %>時点
+              <!--※余裕があれば現在地からの距離-->
 
             </div>
+        </div>
         </div>
         <% end %>
       </div>
