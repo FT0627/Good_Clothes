@@ -1,21 +1,30 @@
+<%= render partial: "public/users/head", locals: {user: @shop.user} %>
+
 <div class="container">
   <h4 class="my-3"><strong>店舗情報</strong></h4>
-  <div>
-    <%= link_to "編集", edit_admin_shop_path(@shop), class: "btn btn-primary" %>
-  </div>
-    
-  <div class="row">
-    <div class="col-lg-5 mx-auto">
-      <div class="my-3">map</div>
-      <div>
-        <%= @shop.prefecture %>
-        <%= @shop.address %>
-      </div>
+  <%= link_to "編集", edit_admin_shop_path(@shop), class: "btn btn-primary" %>
+  <div class="row p-3 d-flex justify-content-center">
+    <div class="col-lg-5">
+        <%= render partial: "public/shops/map", locals: {shop: @shop} %>
     </div>
-    <div class="col-lg-5 mx-auto">
-      <h3 class="my-3"><%= @shop.name %></h3>
-      <div>画像</div>
-      <div><%= @shop.discription %></div>
+    <div class="col-lg-5">
+      <table class="table">
+        <tr>
+          <th>name</th>
+          <td>
+            <h4><%= @shop.name %></h4>
+          </td>
+        </tr>
+        <tr>
+          <th>address</th>
+          <td><%= @shop.full_address %></td>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <td><%= @shop.discription %></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
+

@@ -44,7 +44,7 @@
             <% @user.items.each do |item| %>
               <div class="col-lg-5">
                 <%= link_to item_path(item) do %>
-                <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 border border-dark", style: "object-fit: cover;" %>
+                  <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 border border-dark", style: "object-fit: cover;" %>
                 <% end %>
               </div>
             <% end %>

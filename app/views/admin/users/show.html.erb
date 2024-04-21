@@ -1,4 +1,4 @@
-<%= render partial: "head", locals: {user: @user} %>
+<%= render partial: "public/users/head", locals: {user: @user} %>
 
 <div class="container">
   <div class="row">
@@ -30,6 +30,9 @@
                     <%= @user.followers.count %>
                   <% end %>
                 </div>
+              </li>
+              <li class="list-group-item">
+                <%= link_to "アカウント削除", admin_user_path(@user.id), method: :delete, "data-confirm" => "このユーザーを本当に削除しますか？", class: "btn btn-danger", remote: true %>
               </li>
             </ul>
           </div>

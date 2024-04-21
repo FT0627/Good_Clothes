@@ -6,8 +6,13 @@
           <% if tag.items.present? %>
             <div>
               <i class="fa-solid fa-hashtag ml-1 d-inline-flex">
-                <%= link_to tag.name, root_path(tag_id: tag.id) %>
-                <%= "(#{tag.items.count})" %>
+                <% if user_signed_in? %>
+                  <%= link_to tag.name, root_path(tag_id: tag.id) %>
+                  <%= "(#{tag.items.count})" %>
+                <% else %>
+                  <%= link_to tag.name, admin_items_path(tag_id: tag.id) %>
+                  <%= "(#{tag.items.count})" %>
+                <% end %>
               </i>
             </div>
           <% end %>
@@ -20,7 +25,11 @@
           <% categories.each do |category| %>
           <tr>
             <td>
-              <%= link_to category.name, root_path(category_id: category.id), class: "text-dark" %>
+              <% if user_signed_in? %>
+                <%= link_to category.name, root_path(category_id: category.id), class: "text-dark" %>
+              <% else %>
+                <%= link_to category.name, admin_items_path(category_id: category.id), class: "text-dark" %>
+              <% end %>
             </td>
           </tr>
           <% end %>

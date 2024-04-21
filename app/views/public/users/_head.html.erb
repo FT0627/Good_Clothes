@@ -2,17 +2,36 @@
   <nav class="navbar">
     <div class="container">
       <div class="navbar-brand head-profile p-3">
-        <%= link_to user_path(user.id) do %>
-          <%= image_tag user.get_profile_image(100,100), class: "rounded-circle mr-3", style: "object-fit: cover;" %>
-          <%= user.name %>
+        <% if user_signed_in? %>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle mr-3" %>
+            <%= user.name %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle mr-3" %>
+            <%= user.name %>
+          <% end %>
         <% end %>
         <label class="ml-3">フォロー：</label>
-        <%= link_to user_followings_path(user) do %>
-          <%= user.followings.count %>
-        <% end %>|
+        <% if user_signed_in? %>
+          <%= link_to user_followings_path(user) do %>
+            <%= user.followings.count %>
+          <% end %>|
+        <% else %>
+          <%= link_to admin_user_followings_path(user) do %>
+            <%= user.followings.count %>
+          <% end %>|
+        <% end %>
         <label>フォロワー：</label>
-        <%= link_to user_followers_path(user) do %>
-          <%= user.followers.count %>
+        <% if user_signed_in? %>
+          <%= link_to user_followers_path(user) do %>
+            <%= user.followers.count %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_user_followers_path(user) do %>
+            <%= user.followers.count %>
+          <% end %>
         <% end %>
       </div>
       <%= render partial: "public/relationships/btn", locals: {user: user} %>

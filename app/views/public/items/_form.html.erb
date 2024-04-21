@@ -5,77 +5,59 @@
         <%= hidden_field :star, id: :review_star, class: "form_control" %>
         <div id="post_raty"></div>
       </div>
-      <script>
-        $(document).on('turbolinks:load', function() {
-          let elem = document.querySelector('#post_raty');
-          if (elem == null) return;
-
-          elem.innerHTML = ""
-          let opt = {
-            starOn: "<%= asset_path('star-on.png') %>",
-            starOff: "<%= asset_path('star-off.png') %>",
-            starHalf: "<%= asset_path('star-half.png') %>",
-            scoreName: 'item[star]',
-          };
-          raty(elem, opt);
-        });
-      </script>
     <% else %>
       <div class="form_group">
         <%= render partial: "display_star", locals: {item: @item} %>
       </div>
     <% end %>
 
-    <div class="form_group mb-3">
+    <div class="form_group">
       <%= f.label :shop_id, "店舗" %><br>
       <%= f.select :shop_id, options_from_collection_for_select(current_user.shops.all, :id, :shop_display), class: "form_control" %>
     </div>
 
-    <div class="form_group mb-3">
+    <div class="form_group">
       <%= f.label :category_id, "カテゴリー" %><br>
       <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), class: "form_control" %>
     </div>
 
-    <div class="form_group mb-3">
-      <div>
-        <%= f.label :item_images, "投稿写真" %><br>
-        <%= f.file_field :item_images, multiple: true, placeholder: "投稿写真", accept: "image/*", class: "form_control push", onchange: "loadImage(this);" %>
-      </div>
-      <div id="item_images" style="display: none;">
-        <p id="preview"></p>
-      </div>
-      
-      <script>
-        function loadImage(obj)
-        {
-          var allPreview = document.getElementById('item_images');
-          var newPreview = document.createElement("p");
-          allPreview.querySelector("p").remove();
-          newPreview.setAttribute("id","preview");
-          allPreview.insertBefore(newPreview, allPreview.firstChild);
-          document.getElementById("item_images").style.display = "";
-          for (i = 0; i < obj.files.length; i++) {
-              var fileReader = new FileReader();
-              fileReader.onload = (function (e) {
-                  var img = new Image();
-                  img.src = e.target.result;
-                  document.getElementById('preview').appendChild(img);
-              });
-            fileReader.readAsDataURL(obj.files[i]);
-          }
-        }
-      </script>
-    </div>
-    
+    <div class="form_group">
+      <div class="item-image-form">
+        <div class="item-image-title">
+          <p class="item-image-title__text">購入商品画像</p>
+        </div>
+        <div class="item-image__max-sheet">最大5枚までアップロードできます</div>
+        <div class="item-image__upload">
+          <div class="item-image__upload-images">
+            <div class="item-image__upload-images-box">
+              <ul id="output-box">
+                ここにプレビューが入ります
+              </ul>
+              <div id="image-input" tabindex="0">
+                <label for="item_item_images0" class="item-image__upload-images-box-label" data-label_id="0">
+                  <%= f.file_field :item_images, multiple: true, class: "item-image__upload-images-box-label-input", id: "item_item_images0", style: 'display: none;' %></label>
+                  ここに新しいinputが入ります
+                </label>
+              </div>
+              <pre>
+                <i class="fas fa-camera fa-lg"></i>
+                ドラッグアンドドロップ
+                またはクリックしてファイルをアップロード
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>    
+　　</div>
 
-    <div class="form_group mb-3">
+    <div class="form_group">
       <%= f.label :name, "タグ(','で複数登録可能)" %><br>
       <%= f.text_field :name, value: @tag_list, class: "form_control" %>
     </div>
 
-    <div class="form_group mb-3">
+    <div class="form_group">
       <%= f.label :color_ids, "アイテムカラー(複数選択OK)" %>
-      <div class="d-flex flex-row flex-wrap ">
+      <div class="d-flex justify-content-center">
       <%= f.collection_check_boxes :color_ids, @colors, :id, :code do |b| %>
         <div class="mx-2 mb-2">
           <span style="display: inline-block; width: 20px; height: 20px; background-color: <%= b.text %>; margin-right: 5px;"></span>
@@ -93,3 +75,19 @@
       <% end %>
     </div>
   <% end %>
+  
+  <!--レビューのjavascript-->
+  <script>
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#post_raty');
+      if (elem == null) return;
+  
+      elem.innerHTML = ""
+      let opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'item[star]',
+      };
+      raty(elem, opt);
+    });
+  </script>

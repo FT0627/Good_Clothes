@@ -15,11 +15,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :users, only: :show do 
+    resources :users, only: [:show, :destroy] do 
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
   end 
-    delete 'users/information', to: 'users#destroy'
     resources :categories, only: [:index, :create, :update, :destroy, :edit]
     resources :colors, only: [:index, :create, :update, :destroy, :edit]
     resources :items, only: [:index, :show, :destroy] do
@@ -33,16 +32,12 @@ Rails.application.routes.draw do
     get "search_tag" => "homes#search_tag"
     get 'home/about', to: 'homes#about', as: :about
     
-    resources :users, only: :show do
+    resources :users, only: [:show, :edit, :update, :destroy] do
       resources :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
     end
-    
-    get 'users/information/edit', to: 'users#edit', as: :edit
-    patch 'users/information', to: 'users#update'
-    delete 'users/information', to: 'users#destroy'
-    resources :shops, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+        resources :shops, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :items, only: [:new, :create, :show, :destroy, :update, :edit] do
       resources :post_comments, only: [:create, :destroy]
     end
