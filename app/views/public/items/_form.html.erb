@@ -22,33 +22,10 @@
     </div>
 
     <div class="form_group">
-      <div class="item-image-form">
-        <div class="item-image-title">
-          <p class="item-image-title__text">購入商品画像</p>
-        </div>
-        <div class="item-image__max-sheet">最大5枚までアップロードできます</div>
-        <div class="item-image__upload">
-          <div class="item-image__upload-images">
-            <div class="item-image__upload-images-box">
-              <ul id="output-box">
-                ここにプレビューが入ります
-              </ul>
-              <div id="image-input" tabindex="0">
-                <label for="item_item_images0" class="item-image__upload-images-box-label" data-label_id="0">
-                  <%= f.file_field :item_images, multiple: true, class: "item-image__upload-images-box-label-input", id: "item_item_images0", style: 'display: none;' %></label>
-                  ここに新しいinputが入ります
-                </label>
-              </div>
-              <pre>
-                <i class="fas fa-camera fa-lg"></i>
-                ドラッグアンドドロップ
-                またはクリックしてファイルをアップロード
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>    
-　　</div>
+      <div>
+        <%= f.label :item_images, "投稿写真" %><br>
+        <%= f.file_field :item_images, multiple: true, placeholder: "投稿写真", accept: "image/*", class: "form_control" %>
+    </div>
 
     <div class="form_group">
       <%= f.label :name, "タグ(','で複数登録可能)" %><br>
@@ -86,6 +63,7 @@
       let opt = {
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'item[star]',
       };
       raty(elem, opt);

@@ -11,9 +11,11 @@ class Public::ItemsController < ApplicationController
     @item.user_id = current_user.id
     tag_list = params[:item][:name].split(',')
     if @item.save
+      flash[:notice] = "POSTED!!"
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
+      flash[:alert] = "FAILED!!"
       render :new
     end
   end
@@ -38,6 +40,7 @@ class Public::ItemsController < ApplicationController
       @categories = Category.all
       @tags = Tag.all
       @tag = @item.tags
+      flash[:alert] = "You can't edit the post!!"
       render :show
     end
   end
@@ -46,9 +49,11 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     tag_list = params[:item][:name].split(',')
     if @item.update(item_params)
+      flash[:notice] = "UPDATED!!"
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
+      flash[:alert] = "FAILED!!"
       render :edit
     end
   end
@@ -56,6 +61,7 @@ class Public::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
+    flash[:notice] = "DELETED!!"
     redirect_to root_path
   end
 

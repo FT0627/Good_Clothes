@@ -4,6 +4,7 @@ class Admin::ColorsController < ApplicationController
   def create
     @color = Color.new(color_params)
     @color.save
+    flash[:notice] = 'CREATED'
     redirect_to admin_colors_path
   end
 
@@ -19,12 +20,14 @@ class Admin::ColorsController < ApplicationController
   def update
     color = Color.find(params[:id])
     color.update(color_params)
+    flash[:notice] = 'UPDATED'
     redirect_to admin_colors_path
   end
 
   def destroy
     @color = Color.find(params[:id])
     @color.destroy
+    flash[:notice] = 'DELETED'
     redirect_to admin_colors_path
   end
 

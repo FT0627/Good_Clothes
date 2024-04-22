@@ -28,6 +28,7 @@ class Admin::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
+    flash[:notice] = 'DELETED'
     redirect_to admin_user_path(item.user.id)
   end
 end

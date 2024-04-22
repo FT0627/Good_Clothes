@@ -1,9 +1,9 @@
 <div class="container py-5">
   <div class="card w-75 mx-auto my-4 shadow-lg text-center">
     <h2 class="p-3"><strong>投稿</strong></h2>
-  
+
     <%= render partial: 'form',  locals: {item: @item} %>
-  　
+
   　<div class="my-3">
       <%= link_to "投稿一覧", root_path, class: "badge badge-light" %>｜
       <%= link_to "店舗登録", new_shop_path, class: "badge badge-light" %>
