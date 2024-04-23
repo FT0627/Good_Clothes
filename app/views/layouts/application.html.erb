@@ -13,7 +13,7 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand p-3" href="/">
             <label>Good_Clothes</label>
@@ -80,11 +80,9 @@
         </div>
       </nav>
     </header>
-　<main>
-　  <% flash.each do |message_type, message| %>
-　    <div class="flash-message <%= message_type %>"><%= message %></div>
-　  <% end %>
-    <%= yield %>
-　</main>
+  　  <% flash.each do |message_type, message| %>
+  　    <div class="flash-message <%= message_type %>"><%= message %></div>
+  　  <% end %>
+      <%= yield %>
   </body>
 </html>
