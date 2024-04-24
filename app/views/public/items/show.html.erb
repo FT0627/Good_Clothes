@@ -67,24 +67,31 @@
           <% end %>
         </div>
       </div>
+      
       <div class="row p-3">
-        <div class="col">
+        <div class="col comment-wrapper border-top mb-8">
           <% @item.post_comments.each do |post_comment| %>
-            <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-            <%= post_comment.user.name %>
-            <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-            <%= post_comment.comment %>
-            <% if post_comment.user == current_user %>
-              <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete %>
+            <div class="p-2">
+              <% unless post_comment.user.blank? %>
+                <%= link_to user_path(post_comment.user.id) do %>
+                  <%= image_tag post_comment.user.get_profile_image(100,100), class: "rounded-circle" %>
+                <% end %>
+              <%= post_comment.user.name unless post_comment.user.blank? %>
+              <br/>
+              <%= post_comment.comment %>
+            <% end %>
+            </div>
+            <br/>
+          <% end %>
+          <% if user_signed_in? %>
+            <%= form_with model: [@item, @post_comment] do |f| %>
+              <%= f.text_area :comment, class: "form-control", rows: '3'%>
+              <%= f.submit "コメント", class: "float-right" %>
             <% end %>
           <% end %>
         </div>
-        <div>
-      <%= form_with model: [@item, @post_comment] do |f| %>
-        <%= f.text_area :comment, rows: '2', placeholder: "コメントする" %>
-        <%= f.submit "送信" %>
-      <% end %>
-    </div>
+      </div>
+      
     </div>
   </div>
-  </div>
+</div>
