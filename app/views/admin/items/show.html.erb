@@ -1,7 +1,11 @@
 <%= render partial: "admin/users/head", locals: {user: @item.user} %>
 
-<div class="container">
-      <div class="row mt-3 d-flex justify-content-center">
+<div class="container main">
+  <div class="row">
+    <%= render partial: "public/homes/sidebar", locals: {tags: @tags, categories: @categories} %>
+
+    <div class="col-lg-9 mt-3">
+      <div class="row d-flex justify-content-center">
         <div class="col-lg-5">
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-touch="false", data-interval="false">
             <div class="carousel-inner">
@@ -21,8 +25,8 @@
             </a>
           </div>
         </div>
-        <div class="col-lg-5 border border-dark post_detail">
-          <table class="table ">
+        <div class="col-lg-5 p-3 border border-dark post_detail">
+          <table class="table">
             <caption>☆<%= @item.created_at.strftime('%Y/%m/%d') %> 時点のレビュー☆</caption>
               <tr>
                 <th><i class="fa-solid fa-shop"></i></th>
@@ -52,28 +56,39 @@
                 <td>
                   <% @tag.each do |tag| %>
                     <i class="fa-solid fa-hashtag">
-                      <%= tag.name %>
+                      <%= link_to tag.name, admin_items_path(tag_id: tag.id) %>
                     </i>
                   <% end %>
                 </td>
               </tr>
           </table>
           <%= link_to admin_item_path(@item), method: :delete, "data-confirm" => "この投稿を本当に削除しますか？", class: "btn btn-outline-danger w-100" do %>
-            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-pen-to-square"></i>
           <% end %>
         </div>
       </div>
-  <div class="row">
-    <div class="col-lg-5">
-      <p>コメント件数：<%= @item.post_comments.count %></p>
-      <% @item.post_comments.each do |post_comment| %>
-        <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-        <%= post_comment.user.name %>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-        <%= post_comment.comment %>
-        <% if post_comment.user == current_user %>
-          <%= link_to "削除", admin_item_post_comment_path(post_comment.item, post_comment), method: :delete %>
-        <% end %>
-      <% end %>
+
+      <div class="row mt-3 p-3 border-top ">
+        <div class="col comment-block mb-8 p-2 rounded">
+          <% @item.post_comments.each do |post_comment| %>
+            <div class="comment-user-info p-2 mb-3">
+              <% unless post_comment.user.blank? %>
+                <%= link_to admin_user_path(post_comment.user.id) do %>
+                  <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle text-decoration-none m-1" %>
+                <% end %>
+              <%= post_comment.user.name unless post_comment.user.blank? %>
+              <div class="comment-text border border-dark p-2">
+                <%= post_comment.comment %>
+              </div>
+              <div class="float-right">
+                <span>作成日時：</span><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+              </div>
+            <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
+</div>
