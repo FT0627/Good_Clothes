@@ -35,7 +35,7 @@
     <div class="form_group">
       <%= f.label :color_ids, "アイテムカラー(複数選択OK)" %>
       <div class="d-flex justify-content-center">
-      <%= f.collection_check_boxes :color_ids, @colors, :id, :code do |b| %>
+      <%= f.collection_check_boxes :color_ids, Color.all, :id, :code do |b| %>
         <div class="mx-2 mb-2">
           <span style="display: inline-block; width: 20px; height: 20px; background-color: <%= b.text %>; margin-right: 5px;"></span>
           <%= b.check_box %>

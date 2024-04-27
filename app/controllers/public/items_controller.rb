@@ -15,7 +15,7 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash[:alert] = "FAILED!!"
+      flash[:alert] = "You have to enter the all excepted tag form!!"
       render :new
     end
   end
@@ -53,7 +53,7 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash[:alert] = "FAILED!!"
+      flash[:alert] = "You have to enter the all excepted tag form!!"
       render :edit
     end
   end

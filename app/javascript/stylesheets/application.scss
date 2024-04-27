@@ -12,7 +12,7 @@
   width: 400px;
 }
 
-.sidebar_categories, .post_detail, .sidebar_tags {
+.sidebar_title, .post_detail, .comment-block {
   background-color: #f0f8ff;
 }
 
@@ -20,7 +20,7 @@
   background-color: #b0c4de;
 }
 
-.table, .comment-text {
+.table, .user-comment-box {
   background-color: #fff;
 }
 
@@ -41,12 +41,14 @@
   border: solid 1px #930403;
 }
 
-.comment-block{
-  background-color: #f5f5f5;
-}
-
 .comment-user-info{
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
+.color-box{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}  

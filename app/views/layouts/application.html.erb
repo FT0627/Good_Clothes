@@ -17,7 +17,7 @@
         <div class="container">
           <a class="navbar-brand p-3" href="/">
             <label>Good_Clothes</label>
-            <i class="fa-regular fa-thumbs-up"></i>
+            <i class="fa-solid fa-shirt"></i>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,51 +27,51 @@
               <ul  class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "TOP", root_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "TOP", root_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "マイページ", current_user, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "マイページ", current_user, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "投稿", new_item_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "投稿", new_item_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "MY店舗", shops_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "MY店舗", shops_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark" %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "全ユーザー", admin_root_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "全ユーザー", admin_root_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "投稿一覧", admin_items_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "投稿一覧", admin_items_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "店舗一覧", admin_shops_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "店舗一覧", admin_shops_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "カラー登録", admin_colors_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "カラー登録", admin_colors_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "カテゴリー登録", admin_categories_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "カテゴリー登録", admin_categories_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark" %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "Top", root_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "Top", root_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "About", about_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "About", about_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "新規登録", new_user_registration_path, class: "mr-2 btn btn-outline-dark" %>
+                  <%= link_to "新規登録", new_user_registration_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>
+                  <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light" %>
                 </li>
               <% end %>
               </ul>

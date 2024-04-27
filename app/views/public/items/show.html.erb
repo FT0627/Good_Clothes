@@ -3,10 +3,9 @@
 <div class="container main">
   <div class="row">
     <%= render partial: "public/homes/sidebar", locals: {tags: @tags, categories: @categories} %>
-
     <div class="col-lg-9 mt-3">
       <div class="row d-flex justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-lg-5 mb-3">
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-touch="false", data-interval="false">
             <div class="carousel-inner">
               <% @item.item_images.each_with_index do |item_image, index| %>
@@ -25,7 +24,7 @@
             </a>
           </div>
         </div>
-        <div class="col-lg-5 p-3 border border-dark post_detail">
+        <div class="col-lg-5 mb-3 py-3 post_detail">
           <table class="table">
             <caption>☆<%= @item.created_at.strftime('%Y/%m/%d') %> 時点のレビュー☆</caption>
               <tr>
@@ -41,13 +40,13 @@
               <tr>
                 <th><i class="fa-solid fa-shirt"></i></th>
                 <td>
-                  <h3><strong><%= @item.category.name %></strong></h3></td>
+                  <h3><strong><%= link_to @item.category.name, root_path(category_id: @item.category.id), class: "text-dark" %></strong></h3></td>
               </tr>
               <tr>
                 <th><i class="fa-solid fa-palette"></i></th>
                 <td>
                   <% @item.colors.each do |color| %>
-                    <span style="display: inline-block; width: 20px; height: 20px; background-color: <%= color.code %>; margin-right: 5px;", class="border border-dark"></span>
+                    <span style="background-color: <%= color.code %>;", class="color-box"></span>
                   <% end %>
                 </td>
               </tr>
@@ -67,17 +66,16 @@
           <% end %>
         </div>
       </div>
-
-      <div class="row mt-3 p-3 border-top ">
-        <div class="col comment-block mb-8 p-2 rounded">
+      <div class="row p-3 border-top ">
+        <div class="col comment-block p-2 rounded">
           <% @item.post_comments.each do |post_comment| %>
-            <div class="comment-user-info p-2 mb-3">
+            <div class="comment-user-info p-2">
               <% unless post_comment.user.blank? %>
                 <%= link_to user_path(post_comment.user.id) do %>
                   <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle text-decoration-none m-1" %>
                 <% end %>
               <%= post_comment.user.name unless post_comment.user.blank? %>
-              <div class="comment-text border border-dark p-2">
+              <div class="user-comment-box border border-dark p-2">
                 <%= post_comment.comment %>
               </div>
               <div class="float-right">
@@ -88,17 +86,18 @@
             <br/>
           <% end %>
           <div class="comment-title">コメント投稿</div>
-          <div class="pt-3 border-top border-dark">
+          <div class="border-top border-dark p-2">
             <% if user_signed_in? %>
               <%= form_with model: [@item, @post_comment] do |f| %>
                 <%= f.text_area :comment, class: "form-control", rows: '3', class: "w-100 border border-dark"%>
                 <%= f.submit "コメント", class: "float-right my-1" %>
               <% end %>
+            <% else %>
+              <div class="user-comment-box p-2 border border-dark"><%= link_to "ログイン", new_user_session_path %>してコメントをする。</div>
             <% end %>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
