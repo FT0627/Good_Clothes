@@ -1,0 +1,55 @@
+  <nav class="seconde-nav shadow-sm">
+    <div class="container">
+      <div class="row">
+        <% if user_signed_in? %>
+        <div class="col-lg-2">
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(80,80), class: "rounded-circle" %>
+            <%= user.name %>
+          <% end %>
+        </div>
+          <p>フォロー：</p>
+          <div>
+            <%= link_to user_followings_path(user) do %>
+              <%= user.followings.count %>
+            <% end %>
+          </div>
+          <p>フォロワー：</p>
+          <div>
+            <%= link_to user_followers_path(user) do %>
+              <%= user.followers.count %>
+            <% end %>
+          </div>
+        <div>
+          <%= render partial: "public/relationships/btn", locals: {user: user} %>
+        </div>
+        <% else %>
+        <div>
+          <%= link_to admin_user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
+            <%= user.name %>
+          <% end %>
+        </div>
+        <div>
+          <p class="ml-3">フォロー：</p>
+          <div>
+            <%= link_to admin_user_followings_path(user) do %>
+              <%= user.followings.count %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <p>フォロワー：</p>
+          <div>
+            <%= link_to admin_user_followers_path(user) do %>
+              <%= user.followers.count %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <%= link_to "会員ページ", admin_user_path(user) ,class: "btn btn-success float-right" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </nav>

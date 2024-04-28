@@ -1,27 +1,43 @@
-    <div class="col-lg-3 text-center sidebar">
-      <div class="sidebar_title">
-        <h5 class="my-3">タグ<i class="fa-solid fa-tag"></i></h5>
-        <div class="d-flex flex-wrap">
-        <% tags.each do |tag| %>
-          <% if tag.items.present? %>
-            <div>
-              <i class="fa-solid fa-hashtag ml-1 d-inline-flex">
-                <% if user_signed_in? %>
-                  <%= link_to tag.name, root_path(tag_id: tag.id) %>
-                  <%= "(#{tag.items.count})" %>
-                <% else %>
-                  <%= link_to tag.name, admin_items_path(tag_id: tag.id) %>
-                  <%= "(#{tag.items.count})" %>
+    <div class="col-lg-3 p-3 text-center">
+      <table class="table table-bordered">
+        <thead class="sidebar_title">
+          <tr>
+            <th>
+              <i class="fa-solid fa-tag"></i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <% tags.each do |tag| %>
+              <div class="tag-content d-flex flex-wrap">
+                <% if tag.items.present? %>
+                    <i class="fa-solid fa-hashtag ml-1 d-inline-flex">
+                      <% if user_signed_in? %>
+                        <%= link_to tag.name, root_path(tag_id: tag.id) %>
+                        <%= "(#{tag.items.count})" %>
+                      <% else %>
+                        <%= link_to tag.name, admin_items_path(tag_id: tag.id) %>
+                        <%= "(#{tag.items.count})" %>
+                      <% end %>
+                    </i>
                 <% end %>
-              </i>
-            </div>
-          <% end %>
-        <% end %>
-        </div>
-      </div>
-      <div class="sidebar_title">
-        <h5 class="my-3">カテゴリー<i class="fa-solid fa-list"></i></h5>
-        <table class="table table-bordered">
+              <% end %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead class="sidebar_title">
+          <tr>
+            <th>
+              <i class="fa-solid fa-list"></i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           <% categories.each do |category| %>
           <tr>
             <td>
@@ -33,6 +49,6 @@
             </td>
           </tr>
           <% end %>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
