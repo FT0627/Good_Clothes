@@ -1,6 +1,7 @@
-  <nav class="seconde-nav shadow-sm">
+  <nav class="seconde-nav shadow-sm p-2">
     <div class="container">
       <div class="row d-flex align-items-center">
+        
         <% if user_signed_in? %>
         <div class="col-lg-2">
           <%= link_to user_path(user.id) do %>
@@ -27,31 +28,32 @@
         <div class="offset-lg-5 col-lg-1">
           <%= render partial: "public/relationships/btn", locals: {user: user} %>
         </div>
+        
         <% else %>
-        <div>
+        <div class="col-lg-2">
           <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
+            <%= image_tag user.get_profile_image(80,80), class: "align-middle rounded-circle" %>
+            <span class="align-middle">
             <%= user.name %>
+            </span>
           <% end %>
         </div>
-        <div>
-          <p class="ml-3">フォロー：</p>
-          <div>
-            <%= link_to admin_user_followings_path(user) do %>
-              <%= user.followings.count %>
-            <% end %>
-          </div>
+        <div class="col-lg-2">
+          <span class="align-middle">フォロー：
+          <%= link_to admin_user_followings_path(user) do %>
+            <%= user.followings.count %>
+          <% end %>
+          </span>
         </div>
-        <div>
-          <p>フォロワー：</p>
-          <div>
-            <%= link_to admin_user_followers_path(user) do %>
-              <%= user.followers.count %>
-            <% end %>
-          </div>
+        <div class="col-lg-2">
+          <span class="align-middle">フォロワー：
+          <%= link_to admin_user_followers_path(user) do %>
+            <%= user.followers.count %>
+          <% end %>
+          </span>
         </div>
-        <div>
-          <%= link_to "会員ページ", admin_user_path(user) ,class: "btn btn-success float-right" %>
+        <div class="offset-lg-5 col-lg-1">
+          <%= link_to "会員ページ", admin_user_path(user) ,class: "badge badge-light float-right" %>
         </div>
         <% end %>
       </div>

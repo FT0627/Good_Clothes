@@ -19,7 +19,7 @@ class Public::ShopsController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
-    @shops = @user.shops.all
+    @shops = @user.shops.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def show
