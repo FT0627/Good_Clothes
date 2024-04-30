@@ -1,31 +1,31 @@
-  <nav class="seconde-nav shadow-sm p-2">
+  <nav class="seconde-nav shadow-sm">
     <div class="container">
       <div class="row d-flex align-items-center">
         
         <% if user_signed_in? %>
-        <div class="col-lg-2">
+        <div class="col-lg-1">
           <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(80,80), class: "align-middle rounded-circle" %>
-            <span class="align-middle">
-            <%= user.name %>
-            </span>
+            <%= image_tag user.get_profile_image(50,50), class: "rounded-circle align-middle" %>
           <% end %>
         </div>
-        <div class="col-lg-2">
-          <span class="align-middle">フォロー：
+        <div class="col-lg-1">
+          <%= link_to user_path(user.id) do %>
+            <strong><%= user.name %></strong>
+          <% end %>
+        </div>
+        <div class="offset-lg-1 col-lg-2">
+          <span>フォロー：</span>
           <%= link_to user_followings_path(user) do %>
             <%= user.followings.count %>
           <% end %>
-          </span>
         </div>
         <div class="col-lg-2">
-          <span class="align-middle">フォロワー：
+          <span>フォロワー：</span>
           <%= link_to user_followers_path(user) do %>
             <%= user.followers.count %>
           <% end %>
-          </span>
         </div>
-        <div class="offset-lg-5 col-lg-1">
+        <div class="offset-lg-4 col-lg-1">
           <%= render partial: "public/relationships/btn", locals: {user: user} %>
         </div>
         

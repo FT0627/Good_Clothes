@@ -2,7 +2,8 @@ class Admin::ShopsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @shops = Shop.all.page(params[:page]).per(10).order(created_at: :desc)
+    @user = User.find(params[:user_id])
+    @shops = @user.shops.all.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def show

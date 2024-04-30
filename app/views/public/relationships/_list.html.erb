@@ -1,28 +1,24 @@
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-lg-6">
+<div class="container  main-content pt-3">
+  <div class="row ">
+    <div class="col-lg-6 mx-auto">
       <table class="table">
         <% user.each do |user| %>
         <tr>
-          <td>
+          <td class="align-middle">
             <%= link_to user_path(user) do %>
               <%= image_tag user.get_profile_image(50,50) %>
             <% end %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= link_to user.name, user_path(user) %>
           </td>
-          <td>
-            <p>
-              フォロー<%= link_to user.followings.count, user_followings_path(user) %>
-            </p>
+          <td class="align-middle">
+            フォロー<%= link_to user.followings.count, user_followings_path(user) %>
           </td>
-          <td>
-            <p>
-              フォロワー<%= link_to user.followers.count, user_followers_path(user) %>
-            </p>
+          <td class="align-middle">
+            フォロワー<%= link_to user.followers.count, user_followers_path(user) %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= render partial: "btn", locals: {user: user} %>
           </td>
         </tr>

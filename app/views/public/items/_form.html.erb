@@ -37,7 +37,7 @@
       <div class="d-flex justify-content-center">
       <%= f.collection_check_boxes :color_ids, Color.all, :id, :code do |b| %>
         <div class="mx-2 mb-2">
-          <span style="display: inline-block; width: 20px; height: 20px; background-color: <%= b.text %>; margin-right: 5px;"></span>
+          <span style=" background-color: <%= b.text %>;"></span>
           <%= b.check_box %>
         </div>
       <% end %>      

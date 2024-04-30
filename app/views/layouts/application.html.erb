@@ -15,10 +15,21 @@
     <header class="sticky-top ">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand p-3" href="/">
-            <label>Good_Clothes</label>
-            <i class="fa-solid fa-shirt"></i>
-          </a>
+        <% if user_signed_in? %>
+          <%= link_to root_path do %>
+            <div class="navbar-brand p-3">
+              <label>Good_Clothes</label>
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to admin_root_path do %>
+            <div class="navbar-brand p-3">
+              <label>Good_Clothes</label>
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+          <% end %>
+        <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,9 +58,6 @@
                 </li>
                 <li class="nav-item">
                   <%= link_to "投稿一覧", admin_items_path, class: "mr-2 btn btn-outline-light" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "店舗一覧", admin_shops_path, class: "mr-2 btn btn-outline-light" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "カラー登録", admin_colors_path, class: "mr-2 btn btn-outline-light" %>

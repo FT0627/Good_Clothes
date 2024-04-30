@@ -1,16 +1,18 @@
 <div class="container">
   <div class="w-50">
-    <h1 class="my-3"><strong>カテゴリー</strong></h1>
+    <h1 class="my-3"><strong>カテゴリー登録</strong></h1>
     <%= form_with model: @category, url: admin_categories_path do |f| %>
-      <h4 class="mb-3">カテゴリー名</h4>
+    <div class="field mb-3">
+      <%= f.label :name, "カテゴリー名" %><br />
       <%= f.text_field :name, autofocus: true %>
+    </div>
       <%= f.submit '新規登録' %>
     <% end %>
 
     <table class="mt-3 table">
       <thead>
         <tr>
-          <th><h5>カテゴリー欄</h5></th>
+          <th>カテゴリー欄</th>
           <th></th>
           <th></th>
         </tr>
