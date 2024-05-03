@@ -1,8 +1,4 @@
-<div>
-  <%= flash[:notice] %>
-</div>
-
-<div class="container">
+<div class="container main-content">
   <div class="row">
 
     <%= render partial: "public/homes/sidebar", locals: {tags: @tags, categories: @categories} %>
@@ -27,8 +23,6 @@
 
               <%= render partial: "public/items/display_star", locals: {item: item} %>
               <%= item.created_at.strftime('%Y/%m/%d') %>時点
-              <!--※余裕があれば現在地からの距離-->
-
             </div>
         </div>
         </div>

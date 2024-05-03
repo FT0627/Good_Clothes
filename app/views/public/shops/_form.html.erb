@@ -7,7 +7,7 @@
     <div class="field mb-3">
       <label>住所</label><br />
       <%= f.select :prefecture, Shop.prefectures.keys ,{class: 'hoge'} %>
-      <%= f.text_field :address, autofocus: true, style: "width:50%", placeholder: "例：大阪府大阪市○○―○―○(建物名不要)"  %>
+      <%= f.text_field :address, autofocus: true, style: "width:50%", placeholder: "大阪府大阪市○○―○―○(建物名不要)"  %>
     </div>
 
     <div class="field mb-3">
@@ -18,7 +18,7 @@
 
     <div class="field mb-3">
       <%= f.label :discription, "店舗説明" %><br />
-      <%= f.text_area :discription, style: "width:75%", placeholder: "例：ストリートウェアが充実している。"  %>
+      <%= f.text_area :discription, style: "width:75%", placeholder: "ストリートウェアが充実"  %>
     </div>
 
     <div class="actions mb-3">

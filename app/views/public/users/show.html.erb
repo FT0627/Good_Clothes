@@ -12,8 +12,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <div class="row">
-                  <p class="mr-3">ニックネーム</p>
-                  <p><%= @user.name %></p>
+                  <h4><strong><%= @user.name %></strong></h4>
                 </div>
               </li>
               <li class="list-group-item">
@@ -40,11 +39,11 @@
         </div>
 
         <div class="col-lg-8">
-          <div class="row p-3">
+          <div class="row p-3 mr-3 border-top">
             <% @items.each do |item| %>
-              <div class="col-lg-5">
+              <div class="col-lg-5 mx-auto">
                 <%= link_to item_path(item) do %>
-                  <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 border border-dark", style: "object-fit: cover;" %>
+                  <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 btn btn-outline-light user_item" %>
                 <% end %>
               </div>
             <% end %>

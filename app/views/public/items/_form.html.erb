@@ -1,43 +1,42 @@
   <%= form_with model: @item do |f| %>
     <% if item.id.nil? %>
-      <div class="form_group" id="star">
+      <div class="form_group mb-3" id="star">
         <%= f.label :star, "今回の評価" %>
         <%= hidden_field :star, id: :review_star, class: "form_control" %>
         <div id="post_raty"></div>
       </div>
     <% else %>
-      <div class="form_group">
+      <div class="form_group mb-3">
         <%= render partial: "display_star", locals: {item: @item} %>
       </div>
     <% end %>
 
-    <div class="form_group">
+    <div class="form_group mb-3">
       <%= f.label :shop_id, "店舗" %><br>
       <%= f.select :shop_id, options_from_collection_for_select(current_user.shops.all, :id, :shop_display), class: "form_control" %>
     </div>
 
-    <div class="form_group">
+    <div class="form_group mb-3">
       <%= f.label :category_id, "カテゴリー" %><br>
       <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), class: "form_control" %>
     </div>
 
-    <div class="form_group">
-      <div>
-        <%= f.label :item_images, "投稿写真" %><br>
-        <%= f.file_field :item_images, multiple: true, placeholder: "投稿写真", accept: "image/*", class: "form_control" %>
+    <div class="form_group mb-3">
+      <%= f.label :item_images, "投稿写真" %><br>
+      <%= f.file_field :item_images, multiple: true, placeholder: "投稿写真", accept: "image/*", class: "form_control" %>
     </div>
 
-    <div class="form_group">
+    <div class="form_group mb-3">
       <%= f.label :name, "タグ(','で複数登録可能)" %><br>
-      <%= f.text_field :name, value: @tag_list, class: "form_control" %>
+      <%= f.text_field :name, value: @tag_list, class: "form_control", placeholder: "タグ1,タグ2" %>
     </div>
 
-    <div class="form_group">
+    <div class="form_group mb-3">
       <%= f.label :color_ids, "アイテムカラー(複数選択OK)" %>
       <div class="d-flex justify-content-center">
       <%= f.collection_check_boxes :color_ids, Color.all, :id, :code do |b| %>
         <div class="mx-2 mb-2">
-          <span style=" background-color: <%= b.text %>;"></span>
+          <span style=" background-color: <%= b.text %>;", class= "color-box"></span>
           <%= b.check_box %>
         </div>
       <% end %>      

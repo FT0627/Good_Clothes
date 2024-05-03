@@ -1,6 +1,6 @@
 <%= render partial: "public/users/user_info", locals: {user: @user} %>
 
-<div class="container">
+<div class="container main-content">
   <div class="row">
     <%= render partial: "public/homes/sidebar", locals: {tags: @tags, categories: @categories} %>
     <div class="col-lg-9 mt-3">
@@ -11,18 +11,13 @@
             <%= image_tag @user.get_profile_image(300,300) %>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <div class="row">
-                  <p class="mr-3">ニックネーム</p>
-                  <p><%= @user.name %></p>
-                </div>
+                <h3><strong><%= @user.name %></strong></h3>
               </li>
               <li class="list-group-item">
-                <div class="row">
-                  <p class="mr-3">フォロー</p>
+                  <label class="mr-3">フォロー</label>
                   <%= link_to admin_user_followings_path(@user) do %>
                     <%= @user.followings.count %>
                   <% end %>
-                </div>
               </li>
               <li class="list-group-item">
                 <div class="row">
@@ -33,9 +28,7 @@
                 </div>
               </li>
               <li class="list-group-item">
-                <div class="row">
-                  <%= link_to "登録店舗", admin_shops_path(user_id: @user.id) %>
-                </div>
+                  <%= link_to "登録店舗", admin_shops_path(user_id: @user.id), class: "btn btn-primary" %>
               </li>
               <li class="list-group-item">
                 <%= link_to "アカウント削除", admin_user_path(@user.id), method: :delete, "data-confirm" => "このユーザーを本当に削除しますか？", class: "btn btn-danger", remote: true %>
@@ -45,11 +38,11 @@
         </div>
 
         <div class="col-lg-8">
-          <div class="row p-3 d-flex justify-content-center">
+          <div class="row p-3 mr-3">
             <% @user.items.each do |item| %>
-              <div class="col-lg-5">
+              <div class="col-lg-5 mx-auto">
                 <%= link_to admin_item_path(item) do %>
-                <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 border border-dark", style: "object-fit: cover;" %>
+                <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 btn btn-outline-light" %>
                 <% end %>
               </div>
             <% end %>

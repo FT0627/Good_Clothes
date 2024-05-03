@@ -1,10 +1,14 @@
 <%= render partial: "public/users/user_info", locals: {user: @shop.user} %>
 
 <div class="container main-content">
-  <h4 class="my-3"><strong>店舗情報</strong></h4>
-  <% if @shop.user_id == current_user.id %>
-    <%= link_to "編集", edit_shop_path(@shop), class: "btn btn-primary" %>
-  <% end %>
+  <div class="row mt-3">
+    <div class="col-lg-9 mx-auto d-flex align-items-center bd-highlight">
+      <h4><strong>店舗情報</strong></h4>
+      <% if @shop.user_id == current_user.id %>
+        <%= link_to "編集", edit_shop_path(@shop), class: "btn btn-primary ml-auto bd-highlight" %>
+      <% end %>
+    </div>
+  </div>
   <div class="row p-3 d-flex justify-content-center">
     <div class="col-lg-5">
       <div>
@@ -12,6 +16,7 @@
       </div>
     </div>
     <div class="col-lg-5">
+      <%= image_tag @shop.get_shop_image(200,200) %>
       <table class="table">
         <tr>
           <th>name</th>
