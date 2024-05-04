@@ -1,31 +1,36 @@
 <%= render partial: "public/users/user_info", locals: {user: @shop.user} %>
 
 <div class="container main-content">
-  <h4 class="my-3"><strong>店舗情報</strong></h4>
-  <%= link_to "編集", edit_admin_shop_path(@shop), class: "btn btn-primary" %>
-  <div class="row p-3 d-flex justify-content-center">
-    <div class="col-lg-5">
-        <%= render partial: "public/shops/map", locals: {shop: @shop} %>
+  <div class="row">
+    <div class="col-lg-9 py-3 mx-auto d-flex align-items-center bd-highlight">
+      <h4 class="mb-0"><strong>店舗情報</strong></h4>
+      <%= link_to "編集", edit_admin_shop_path(@shop), class: "btn btn-primary" %>
     </div>
-    <div class="col-lg-5">
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-5 p-3 text-center shop-detail">
+      <%= image_tag @shop.get_shop_image(350,350) %>
       <table class="table">
         <tr>
-          <th>name</th>
+          <th><i class="fa-solid fa-shop"></i></th>
           <td>
             <h4><%= @shop.name %></h4>
           </td>
         </tr>
         <tr>
-          <th>address</th>
+          <th><i class="fa-solid fa-location-dot"></i></th>
           <td><%= @shop.full_address %></td>
         </tr>
         <tr>
-          <th>introduction</th>
+          <th><i class="fa-regular fa-clipboard"></i></th>
           <td><%= @shop.discription %></td>
         </tr>
       </table>
     </div>
-    <div class="float-right">
+    <div class="col-lg-5">
+      <div>
+        <%= render partial: "public/shops/map", locals: {shop: @shop} %>
+      </div>
     </div>
   </div>
 </div>

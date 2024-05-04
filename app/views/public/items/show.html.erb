@@ -77,6 +77,7 @@
               <%= post_comment.user.name unless post_comment.user.blank? %>
               <div class="user-comment-box border border-dark p-2">
                 <%= post_comment.comment %>
+                <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "badge badge-danger float-right" %>             
               </div>
               <div class="float-right">
                 <span>作成日時：</span><%= post_comment.created_at.strftime('%Y/%m/%d') %>
