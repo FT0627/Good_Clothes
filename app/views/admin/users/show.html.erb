@@ -20,12 +20,10 @@
                   <% end %>
               </li>
               <li class="list-group-item">
-                <div class="row">
-                  <p class="mr-3">フォロワー</p>
+                  <label class="mr-3">フォロワー</label>
                   <%= link_to admin_user_followers_path(@user) do %>
                     <%= @user.followers.count %>
                   <% end %>
-                </div>
               </li>
               <li class="list-group-item">
                   <%= link_to "登録店舗", admin_shops_path(user_id: @user.id), class: "btn btn-primary" %>
@@ -42,7 +40,7 @@
             <% @user.items.each do |item| %>
               <div class="col-lg-5 mx-auto">
                 <%= link_to admin_item_path(item) do %>
-                <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 btn btn-outline-light" %>
+                <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 btn btn-outline-light user-item" %>
                 <% end %>
               </div>
             <% end %>

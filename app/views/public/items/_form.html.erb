@@ -12,7 +12,8 @@
     <% end %>
 
     <div class="form_group mb-3">
-      <%= f.label :shop_id, "店舗" %><br>
+      <%= f.label :shop_id, "店舗" %>
+      <div class="">先に店舗登録が必要になります。</div>
       <%= f.select :shop_id, options_from_collection_for_select(current_user.shops.all, :id, :shop_display), class: "form_control" %>
     </div>
 

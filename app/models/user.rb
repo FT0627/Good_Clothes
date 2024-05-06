@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   has_many :fans, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :my_fans, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-
   has_many :followings, through: :fans, source: :followed
   has_many :followers, through: :my_fans, source: :follower
 
@@ -31,24 +30,24 @@ class User < ApplicationRecord
  # ゲストユーザー機能
   GUEST_USER_EMAIL = "guest@example.com"
 
-    def self.guest
-      find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
-        user.password = SecureRandom.urlsafe_base64
-        user.name = "ゲスト"
-      end
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
     end
-
-    def guest_user?
-      email == GUEST_USER_EMAIL
-    end
-
-  #フォロー機能
-  def follow(user_id)
-    fans.create(followed_id: user_id)
   end
 
-  def unfollow(user_id)
-    fans.find_by(followed_id: user_id).destroy
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+
+  #フォロー機能
+  def follow(user)
+    fans.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    fans.find_by(followed_id: user.id).destroy
   end
 
   def following?(user)

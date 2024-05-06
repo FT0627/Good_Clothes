@@ -11,8 +11,8 @@
         <table class="table">
           <% @shops.each do |shop| %>
           <tr>
+            <th><%= shop.prefecture %></td>
             <td><%= link_to shop.name, shop_path(shop) %></td>
-            <td><%= shop.prefecture %></td>
           </tr>
           <% end %>
         </table>

@@ -1,9 +1,15 @@
 <div class="container">
   <div class="w-50">
-    <h1 class="my-3"><strong>カラー</strong></h1>
+    <h1 class="my-3"><strong>カラー編集</strong></h1>
     <%= form_with model: @color, url: admin_color_path(@color), method: :patch do |f| %>
-      <h4 class="mb-3">カテゴリー名</h4>
-      <%= f.text_field :name, autofocus: true %>
+      <div class="field mb-3">
+        <%= f.label :name, "色名" %><br />
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+      <div class="field mb-3">
+        <%= f.label :name, "コード" %><br />
+        <%= f.text_field :code, autofocus: true %>
+      </div>
       <%= f.submit '保存' %>
     <% end %>
   </div>

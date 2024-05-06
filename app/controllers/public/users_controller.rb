@@ -46,7 +46,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.guest_user?
       redirect_to root_path, alert: "GUEST_USER can't the profile!!"
-      # 遷移先はマイページ,マイページ編集のボタン表示も後に記述
     end
   end
 end

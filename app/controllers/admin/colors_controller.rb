@@ -3,9 +3,12 @@ class Admin::ColorsController < ApplicationController
 
   def create
     @color = Color.new(color_params)
-    @color.save
-    flash[:notice] = 'CREATED'
-    redirect_to admin_colors_path
+    if @color.save
+      flash[:notice] = 'You could create the new color.'
+    else
+      flash[:alert] = "You have to enter the all !!"
+      redirect_to admin_colors_path
+    end
   end
 
   def index
@@ -19,15 +22,18 @@ class Admin::ColorsController < ApplicationController
   
   def update
     color = Color.find(params[:id])
-    color.update(color_params)
-    flash[:notice] = 'UPDATED'
-    redirect_to admin_colors_path
+    if color.update(color_params)
+      flash[:notice] = 'You could update the color.'
+    else
+      flash[:alert] = 'You have to enter the all !!'
+      redirect_to admin_colors_path
+    end
   end
 
   def destroy
     @color = Color.find(params[:id])
     @color.destroy
-    flash[:notice] = 'DELETED'
+    flash[:notice] = 'You could delete the color.'
     redirect_to admin_colors_path
   end
 

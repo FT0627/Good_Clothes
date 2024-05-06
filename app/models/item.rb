@@ -5,7 +5,7 @@ class Item < ApplicationRecord
 
   has_many :post_comments, dependent: :destroy
 
-  has_many :post_colors, dependent: :destroy
+  has_many :post_colors
   has_many :colors, through: :post_colors
 
   has_many :post_tags, dependent: :destroy
