@@ -24,6 +24,14 @@
   background-color: #fff;
 }
 
+.name-title{
+  padding: 3px 4px;
+  background-color: #acabab;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+  
+}
 
 .flash-message {
   border-radius: 5px;
@@ -52,6 +60,7 @@
   width: 20px;
   height: 20px;
   margin-right: 5px;
+  border: solid 1px #000000;
 }
 
 .user-item{

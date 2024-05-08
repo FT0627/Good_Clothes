@@ -11,25 +11,20 @@
             <%= image_tag @user.get_profile_image(300,300) %>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <div class="row">
-                  <h4><strong><%= @user.name %></strong></h4>
-                </div>
+                <label class="name-title">ニックネーム</label><br>
+                <h4 class="text-nowrap text-truncate"><strong><%= @user.name %></strong></h4>
               </li>
               <li class="list-group-item">
-                <div class="row">
-                  <p class="mr-3">フォロー</p>
-                  <%= link_to user_followings_path(@user) do %>
-                    <%= @user.followings.count %>
-                  <% end %>
-                </div>
+                <label class="mr-3">フォロー</label>
+                <%= link_to user_followings_path(@user) do %>
+                  <%= @user.followings.count %>
+                <% end %>
               </li>
               <li class="list-group-item">
-                <div class="row">
-                  <p class="mr-3">フォロワー</p>
-                  <%= link_to user_followers_path(@user) do %>
-                    <%= @user.followers.count %>
-                  <% end %>
-                </div>
+                <label class="mr-3">フォロワー</label>
+                <%= link_to user_followers_path(@user) do %>
+                  <%= @user.followers.count %>
+                <% end %>
               </li>
             </ul>
             <div class="card-body">

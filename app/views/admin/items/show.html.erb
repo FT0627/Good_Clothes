@@ -30,7 +30,11 @@
               <tr>
                 <th><i class="fa-solid fa-shop"></i></th>
                 <td>
-                  <h2><strong><%= link_to @item.shop.name, admin_shop_path(@item.shop_id), class: "text-dark" %></strong></h2>
+                  <% if @item.shop.nil? %>
+                    <h4>※この店舗は投稿者によって削除されました</h4>
+                  <% else %>
+                    <h2><strong><%= link_to @item.shop.name, admin_shop_path(@item.shop_id), class: "text-dark" %></strong></h2>
+                  <% end %>
                 </td>
               </tr>
               <tr>

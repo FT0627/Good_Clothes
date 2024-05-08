@@ -21,8 +21,12 @@
               <%= image_tag item.item_images[0], class: "card-img-top" %>
             <% end %>
             <div class="card-body">
-              <labal><%= link_to item.shop.prefecture, root_path(prefecture: item.shop.prefecture), class: "text-dark" %>｜</labal>
-              <%= link_to item.shop.name, shop_path(item.shop.id), class: "text-dark" %>
+              <% if item.shop.nil? %>
+                <div>店舗情報は削除されました</div>
+              <% else %>
+                <labal><%= link_to item.shop.prefecture, root_path(prefecture: item.shop.prefecture), class: "text-dark" %>｜</labal>
+                <%= link_to item.shop.name, shop_path(item.shop.id), class: "text-dark" %>
+              <% end %>
               <%= render partial: "public/items/display_star", locals: {item: item} %>
               <%= item.created_at.strftime('%Y/%m/%d') %>時点
             </div>

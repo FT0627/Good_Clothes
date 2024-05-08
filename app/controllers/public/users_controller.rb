@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
-    if @shop.user == current_user
+    if @user == current_user
       render :edit
     else
       flash[:alert] = "You can't edit the post !!"
