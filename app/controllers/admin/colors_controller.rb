@@ -5,9 +5,11 @@ class Admin::ColorsController < ApplicationController
     @color = Color.new(color_params)
     if @color.save
       flash[:notice] = 'You could create the new color.'
+      redirect_to admin_colors_path
     else
       flash[:alert] = "You have to enter the all !!"
-      redirect_to admin_colors_path
+      @colors = Color.all
+      render :index
     end
   end
 
@@ -24,9 +26,10 @@ class Admin::ColorsController < ApplicationController
     color = Color.find(params[:id])
     if color.update(color_params)
       flash[:notice] = 'You could update the color.'
+      redirect_to admin_colors_path
     else
       flash[:alert] = 'You have to enter the all !!'
-      redirect_to admin_colors_path
+      render :edit
     end
   end
 

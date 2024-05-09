@@ -9,10 +9,10 @@ class Public::ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     @shop.user_id = current_user.id
     if @shop.save
-      flash[:notice] = "Registration Successful !!"
+      flash[:notice] = "You could register the new shop."
       redirect_to shop_path(@shop)
     else
-      flash[:alert] = "Registration failure !!"
+      flash[:alert] = "You have to enter the all !!"
       render :new
     end
   end
@@ -39,10 +39,10 @@ class Public::ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
-      flash[:notice] = "You could update the post!!"
+      flash[:notice] = "You could update the shop information."
       redirect_to shop_path(@shop)
     else
-      flash[:alert] = "You could not update the post!!"
+      flash[:alert] = "You have to enter the all !"
       render :show
     end
   end
@@ -50,7 +50,7 @@ class Public::ShopsController < ApplicationController
   def destroy
     shop = Shop.find(params[:id])
     shop.destroy
-    flash[:notice] = "You could delete the post!!"
+    flash[:notice] = "You could delete the shop!!"
     redirect_to shops_path
   end
 

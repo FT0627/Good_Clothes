@@ -11,7 +11,7 @@ class Public::ItemsController < ApplicationController
     @item.user_id = current_user.id
     tag_list = params[:item][:name].split(',')
     if @item.save
-      flash[:notice] = "POSTED!!"
+      flash[:notice] = "You could create the new post."
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
@@ -49,7 +49,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     tag_list = params[:item][:name].split(',')
     if @item.update(item_params)
-      flash[:notice] = "UPDATED!!"
+      flash[:notice] = "You could update the post."
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
@@ -61,7 +61,7 @@ class Public::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    flash[:notice] = "DELETED!!"
+    flash[:notice] = "You could delete the post."
     redirect_to root_path
   end
 

@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
     if @user == current_user
       render :edit
     else
-      flash[:alert] = "You can't edit the post !!"
+      flash[:alert] = "You can't edit the profile !!"
       render :show
     end
   end
@@ -22,9 +22,10 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-    flash[:notice] = 'UPDATED'
+    flash[:notice] = 'You could update the profile.'
       redirect_to user_path(@user)
     else
+    flash[:alert] = "You have to enter the form ! "
       render :edit
     end
   end
@@ -32,7 +33,7 @@ class Public::UsersController < ApplicationController
   def destroy
     @user = User.find(current_user.id)
     @user.destroy
-    flash[:notice] = 'DELETED'
+    flash[:notice] = 'You could delete the account.'
     redirect_to root_path
   end
 
@@ -45,7 +46,7 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(current_user.id)
     if @user.guest_user?
-      redirect_to root_path, alert: "GUEST_USER can't the profile!!"
+      redirect_to root_path, alert: "Guesst user can't the profile!!"
     end
   end
 end
