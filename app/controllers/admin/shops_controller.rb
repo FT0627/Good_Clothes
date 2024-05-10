@@ -17,13 +17,15 @@ class Admin::ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     @shop.update(shop_params)
+    flash[:notice] = "You could update the shop information."
     redirect_to admin_shop_path(@shop)
   end
 
   def destroy
     @shop = Shop.find(params[:id])
     @shop.destroy
-    redirect_to admin_shop_path(@shop)
+    flash[:notice] = "You could delete the shop."
+    redirect_to admin_shops_path
   end
 
   private

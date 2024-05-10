@@ -24,13 +24,19 @@
   background-color: #fff;
 }
 
+.user-name-list{
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .name-title{
   padding: 3px 4px;
   background-color: #acabab;
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
-  
 }
 
 .flash-message {

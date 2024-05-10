@@ -15,15 +15,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :users, only: [:show, :destroy] do 
+    resources :users, only: [:show, :destroy] do
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
-  end 
+  end
     resources :categories, only: [:index, :create, :update, :destroy, :edit]
     resources :colors, only: [:index, :create, :update, :destroy, :edit]
     resources :items, only: [:index, :show, :destroy] do
-      resource :post_comments, only: [:destroy]
-    end 
+      resources :post_comments, only: [:destroy]
+    end
     resources :shops, only: [:show, :index, :edit, :update, :destroy]
   end
 
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "search_tag" => "homes#search_tag"
     get 'home/about', to: 'homes#about', as: :about
-    
+
     resources :users, only: [:show, :edit, :update, :destroy] do
       resource :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: "followings"
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
     resources :shops, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :items, only: [:new, :create, :show, :destroy, :update, :edit] do
-      resource :post_comments, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

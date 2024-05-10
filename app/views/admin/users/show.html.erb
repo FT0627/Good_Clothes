@@ -11,7 +11,8 @@
             <%= image_tag @user.get_profile_image(300,300) %>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <h3><strong><%= @user.name %></strong></h3>
+                <label class="name-title">ニックネーム</label><br>
+                <h4 class="text-nowrap text-truncate"><strong><%= @user.name %></strong></h4>
               </li>
               <li class="list-group-item">
                   <label class="mr-3">フォロー</label>

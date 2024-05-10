@@ -4,14 +4,14 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   def after_sign_in_path_for(resource)
-    flash[:notice] = "Thank you for LOGIN !!"
+    flash[:notice] = "Thank you for login !!"
     current_user
   end
 
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to root_path, notice: "Thank you for LOGIN !!"
+    redirect_to root_path, notice: "Thank you for login !!"
   end
   # GET /resource/sign_in
   # def new

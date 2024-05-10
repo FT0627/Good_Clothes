@@ -85,14 +85,20 @@
           </div>
           <% @item.post_comments.each do |post_comment| %>
             <div class="comment-user-info p-2">
-              <% unless post_comment.user.blank? %>
-                <%= link_to user_path(post_comment.user.id) do %>
-                  <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle text-decoration-none m-1" %>
-                <% end %>
-              <%= post_comment.user.name unless post_comment.user.blank? %>
+              <div class="row d-flex justify-content-center">
+                <div class="col-lg-1">
+                  <% unless post_comment.user.blank? %>
+                    <%= link_to user_path(post_comment.user.id) do %>
+                      <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle text-decoration-none m-1" %>
+                    <% end %>
+                </div>
+                <div class="col-lg-11 align-self-center text-nowrap text-truncate">
+                  <%= post_comment.user.name unless post_comment.user.blank? %>
+                </div>
+              </div>
               <div class="user-comment-box border border-dark p-2">
                 <%= post_comment.comment %>
-                <%= link_to "削除", item_post_comments_path(post_comment.item, post_comment), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "badge badge-danger float-right" %>             
+                <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "badge badge-danger float-right" %>
               </div>
               <div class="float-right">
                 <span>作成日時：</span><%= post_comment.created_at.strftime('%Y/%m/%d') %>

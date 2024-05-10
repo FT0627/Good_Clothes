@@ -3,9 +3,14 @@
 <div class="container main-content">
   <div class="row">
     <div class="col-lg-8 mx-auto">
-      <h5 class="page-title my-3">
-        <strong><%= @user.name %>さんの店舗一覧</strong>
-      </h5>
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-2">
+          <h5 class="text-nowrap text-truncate my-3">
+            <strong><%= @user.name %></strong>
+          </h5>
+        </div>
+        <div class="col-lg-4">さんの店舗一覧</div>
+      </div>
       <div>
         <table class="table">
           <% @shops.each do |shop| %>

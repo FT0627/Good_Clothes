@@ -35,7 +35,7 @@
             <%= image_tag user.get_profile_image(80,80), class: "align-middle rounded-circle" %>
           <% end %>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-2 text-nowrap text-truncate">
           <%= link_to admin_user_path(user.id) do %>
             <strong><%= user.name %></strong>
           <% end %>
