@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = "You could delete the user."
+      flash[:notice] = "You have successfully deleted the user."
       redirect_to admin_root_path
     else
       render :show

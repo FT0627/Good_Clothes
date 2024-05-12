@@ -98,7 +98,9 @@
               </div>
               <div class="user-comment-box border border-dark p-2">
                 <%= post_comment.comment %>
-                <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "badge badge-danger float-right" %>
+                <% if post_comment.user.id == current_user.id || @item.user_id == current_user.id %>
+                  <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "badge badge-danger float-right" %>
+                <% end %>
               </div>
               <div class="float-right">
                 <span>作成日時：</span><%= post_comment.created_at.strftime('%Y/%m/%d') %>

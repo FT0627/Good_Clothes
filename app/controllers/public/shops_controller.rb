@@ -31,7 +31,7 @@ class Public::ShopsController < ApplicationController
     if @shop.user == current_user
       render :edit
     else
-      flash[:alert] = "You can't edit this shop !!"
+      flash[:alert] = "You can't edit this shop !"
       render :show
     end
   end
@@ -39,7 +39,7 @@ class Public::ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
-      flash[:notice] = "You could update the shop information."
+      flash[:notice] = "You have successfully updated the shop information."
       redirect_to shop_path(@shop)
     else
       flash[:alert] = "You have to enter the all !"
@@ -50,7 +50,7 @@ class Public::ShopsController < ApplicationController
   def destroy
     shop = Shop.find(params[:id])
     shop.destroy
-    flash[:notice] = "You could delete the shop!!"
+    flash[:notice] = "You have successfully delete the shop !"
     redirect_to shops_path
   end
 

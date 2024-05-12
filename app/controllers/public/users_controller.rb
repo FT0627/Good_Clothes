@@ -22,10 +22,10 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-    flash[:notice] = "You could update the profile."
+    flash[:notice] = "You have successfully updated the profile."
       redirect_to user_path(@user)
     else
-    flash[:alert] = "You have to enter the form ! "
+    flash[:alert] = "You have to enter the all forms !"
       render :edit
     end
   end
@@ -33,7 +33,7 @@ class Public::UsersController < ApplicationController
   def destroy
     @user = User.find(current_user.id)
     @user.destroy
-    flash[:notice] = "You could delete the account."
+    flash[:notice] = "You have successfully deleted the account."
     redirect_to root_path
   end
 

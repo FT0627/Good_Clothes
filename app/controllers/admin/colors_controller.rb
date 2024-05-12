@@ -4,10 +4,10 @@ class Admin::ColorsController < ApplicationController
   def create
     @color = Color.new(color_params)
     if @color.save
-      flash[:notice] = 'You could create the new color.'
+      flash[:notice] = 'You have successfully created the new color.'
       redirect_to admin_colors_path
     else
-      flash[:alert] = "You have to enter the all !!"
+      flash[:alert] = "You have to enter the all forms!"
       @colors = Color.all
       render :index
     end
@@ -17,18 +17,18 @@ class Admin::ColorsController < ApplicationController
     @colors = Color.all
     @color = Color.new
   end
-  
+
   def edit
     @color = Color.find(params[:id])
   end
-  
+
   def update
     color = Color.find(params[:id])
     if color.update(color_params)
-      flash[:notice] = 'You could update the color.'
+      flash[:notice] = 'You have successfully updated the color information.'
       redirect_to admin_colors_path
     else
-      flash[:alert] = 'You have to enter the all !!'
+      flash[:alert] = 'You have to enter the all forms !'
       render :edit
     end
   end
@@ -36,7 +36,7 @@ class Admin::ColorsController < ApplicationController
   def destroy
     @color = Color.find(params[:id])
     @color.destroy
-    flash[:notice] = 'You could delete the color.'
+    flash[:notice] = 'You have successfully deleted the color.'
     redirect_to admin_colors_path
   end
 

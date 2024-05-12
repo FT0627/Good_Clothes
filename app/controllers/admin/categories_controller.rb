@@ -9,10 +9,10 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-    flash[:notice] = 'You could create the new category.'
+    flash[:notice] = 'You have successfully posted the new category.'
       redirect_to admin_categories_path
     else
-      flash[:alert]= "You have to enter the form !!"
+      flash[:alert]= "You have to enter the form !"
       @categories = Category.all
       render :index
     end
@@ -25,10 +25,10 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      flash[:notice] = 'You could update the category.'
+      flash[:notice] = 'You have successfully updated the shop information.'
       redirect_to admin_categories_path
     else
-      flash[:notice] = 'You have to enter the form !!'
+      flash[:notice] = 'You have to enter the form !'
       render :edit
     end
   end
@@ -36,7 +36,7 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    flash[:notice] = 'You could delete the category.'
+    flash[:notice] = 'You have successfully deleted the category.'
     redirect_to admin_categories_path
   end
 

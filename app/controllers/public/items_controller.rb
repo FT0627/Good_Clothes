@@ -11,11 +11,11 @@ class Public::ItemsController < ApplicationController
     @item.user_id = current_user.id
     tag_list = params[:item][:name].split(',')
     if @item.save
-      flash[:notice] = "You could create the new post."
+      flash[:notice] = "You have successfully created the new post."
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash[:alert] = "You have to enter the all excepted tag form!!"
+      flash[:alert] = "You have to enter the all forms"
       render :new
     end
   end
@@ -49,11 +49,11 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     tag_list = params[:item][:name].split(',')
     if @item.update(item_params)
-      flash[:notice] = "You could update the post."
+      flash[:notice] = "You have successfully updated the post."
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash[:alert] = "You have to enter the all excepted tag form!!"
+      flash[:alert] = "You have to enter the forms !"
       render :edit
     end
   end
@@ -61,7 +61,7 @@ class Public::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    flash[:notice] = "You could delete the post."
+    flash[:notice] = "You have successfully deleted the post."
     redirect_to root_path
   end
 
