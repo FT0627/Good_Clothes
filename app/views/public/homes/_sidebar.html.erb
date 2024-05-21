@@ -1,4 +1,5 @@
     <div class="col-lg-3 p-3 text-center">
+
       <table class="table table-bordered">
         <thead class="sidebar_title">
           <tr>
@@ -13,12 +14,12 @@
               <% tags.each do |tag| %>
               <div class="tag-content d-flex flex-wrap">
                 <% if tag.items.present? %>
-                    <i class="fa-solid fa-hashtag ml-1 d-inline-flex">
-                      <% if user_signed_in? %>
-                        <%= link_to tag.name, root_path(tag_id: tag.id) %>
+                    <i class="fa-solid fa-hashtag">
+                      <% if admin_signed_in? %>
+                        <%= link_to tag.name, admin_items_path(tag_id: tag.id) %>
                         <%= "(#{tag.items.count})" %>
                       <% else %>
-                        <%= link_to tag.name, admin_items_path(tag_id: tag.id) %>
+                        <%= link_to tag.name, root_path(tag_id: tag.id) %>
                         <%= "(#{tag.items.count})" %>
                       <% end %>
                     </i>
@@ -29,6 +30,7 @@
           </tr>
         </tbody>
       </table>
+
       <table class="table table-bordered">
         <thead class="sidebar_title">
           <tr>
@@ -41,14 +43,15 @@
           <% categories.each do |category| %>
           <tr>
             <td>
-              <% if user_signed_in? %>
-                <%= link_to category.name, root_path(category_id: category.id), class: "text-dark" %>
-              <% else %>
+              <% if admin_signed_in? %>
                 <%= link_to category.name, admin_items_path(category_id: category.id), class: "text-dark" %>
+              <% else %>
+                <%= link_to category.name, root_path(category_id: category.id), class: "text-dark" %>
               <% end %>
             </td>
           </tr>
           <% end %>
         </tbody>
       </table>
+
     </div>
