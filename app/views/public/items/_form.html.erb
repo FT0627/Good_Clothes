@@ -35,7 +35,7 @@
 
     <div class="form_group mb-3">
       <%= f.label :color_ids, "アイテムカラー(複数選択OK)" %>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center flex-wrap">
       <%= f.collection_check_boxes :color_ids, Color.all, :id, :code do |b| %>
         <div class="mx-2 mb-2">
           <span style=" background-color: <%= b.text %>;", class= "color-box"></span>
@@ -64,7 +64,6 @@
       let opt = {
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
         scoreName: 'item[star]',
       };
       raty(elem, opt);

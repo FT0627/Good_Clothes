@@ -35,7 +35,7 @@ class Shop < ApplicationRecord
    end
    
    def shop_display
-     name + '：' + prefecture + '' + address
+     name + '：' + prefecture
    end
    
    def full_address
