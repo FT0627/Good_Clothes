@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 1..20 }
   validates :email, presence: true
 
  #画像調整機能

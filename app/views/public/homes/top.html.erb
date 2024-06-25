@@ -11,7 +11,7 @@
           <div class="card m-2">
             <div class="card-header">
               <%= link_to user_path(item.user) do %>
-                <%= image_tag item.user.get_profile_image(50,50), class: "rounded-circle text-decoration-none" %>
+                <%= image_tag item.user.get_profile_image(100,100), class: "profile-img" %>
               <% end %>
               <% if current_user != item.user %>
                 <%= render partial: "public/relationships/btn", locals: {user: item.user} %>

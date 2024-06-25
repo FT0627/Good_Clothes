@@ -12,7 +12,7 @@ class Public::ShopsController < ApplicationController
       flash[:notice] = "You could register the new shop."
       redirect_to shop_path(@shop)
     else
-      flash[:alert] = "You have to enter the all !!"
+      flash.now[:alert] = "Please fill in the form appropriately."
       render :new
     end
   end
@@ -31,7 +31,7 @@ class Public::ShopsController < ApplicationController
     if @shop.user == current_user
       render :edit
     else
-      flash[:alert] = "You can't edit this shop !"
+      flash.now[:alert] = "You can't edit this shop !"
       render :show
     end
   end
@@ -42,8 +42,8 @@ class Public::ShopsController < ApplicationController
       flash[:notice] = "You have successfully updated the shop information."
       redirect_to shop_path(@shop)
     else
-      flash[:alert] = "You have to enter the all !"
-      render :show
+      flash.now[:alert] = "Please fill in the form appropriately."
+      render :edit
     end
   end
 

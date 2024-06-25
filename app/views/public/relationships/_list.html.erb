@@ -3,7 +3,7 @@
         <tr class="text-nowrap text-truncate">
           <td class="align-middle">
             <%= link_to user_path(user) do %>
-              <%= image_tag user.get_profile_image(50,50) %>
+              <%= image_tag user.get_profile_image(100,100), class: "profile-img" %>
             <% end %>
           </td>
           <td class="align-middle user-name-list">

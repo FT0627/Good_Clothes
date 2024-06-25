@@ -1,6 +1,6 @@
   <%= form_with model: @shop do |f| %>
     <div class="field mb-3">
-      <%= f.label :name, "店名" %><br />
+    <%= f.label :name, "店名(20字以内)" %><br />
       <%= f.text_field :name, autofocus: true, style: "width:50%", placeholder: "○○ショップ"  %>
     </div>
 
@@ -17,7 +17,7 @@
 
 
     <div class="field mb-3">
-      <%= f.label :discription, "店舗説明" %><br />
+      <%= f.label :discription, "店舗説明(60字以内・任意)" %><br />
       <%= f.text_area :discription, style: "width:75%", placeholder: "ストリートウェアが充実"  %>
     </div>
 

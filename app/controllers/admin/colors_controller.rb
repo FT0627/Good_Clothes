@@ -7,8 +7,8 @@ class Admin::ColorsController < ApplicationController
       flash[:notice] = 'You have successfully created the new color.'
       redirect_to admin_colors_path
     else
-      flash[:alert] = "You have to enter the all forms!"
       @colors = Color.all
+      flash.now[:alert] = "You have to enter the all forms!"
       render :index
     end
   end
@@ -28,7 +28,7 @@ class Admin::ColorsController < ApplicationController
       flash[:notice] = 'You have successfully updated the color information.'
       redirect_to admin_colors_path
     else
-      flash[:alert] = 'You have to enter the all forms !'
+      flash.now[:alert] = 'You have to enter the all forms !'
       render :edit
     end
   end

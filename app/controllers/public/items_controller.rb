@@ -15,7 +15,7 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash[:alert] = "You have to enter the all forms"
+      flash.now[:alert] = "You have to enter the all forms"
       render :new
     end
   end
@@ -40,7 +40,7 @@ class Public::ItemsController < ApplicationController
       @categories = Category.all
       @tags = Tag.all
       @tag = @item.tags
-      flash[:alert] = "You can't edit the post!!"
+      flash.now[:alert] = "You can't edit the post!!"
       render :show
     end
   end
@@ -53,7 +53,7 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash[:alert] = "You have to enter the forms !"
+      flash.now[:alert] = "You have to enter the forms !"
       render :edit
     end
   end

@@ -12,7 +12,7 @@ class Admin::CategoriesController < ApplicationController
     flash[:notice] = 'You have successfully posted the new category.'
       redirect_to admin_categories_path
     else
-      flash[:alert]= "You have to enter the form !"
+      flash.now[:alert]= "You have to enter the form !"
       @categories = Category.all
       render :index
     end
@@ -28,7 +28,7 @@ class Admin::CategoriesController < ApplicationController
       flash[:notice] = 'You have successfully updated the shop information.'
       redirect_to admin_categories_path
     else
-      flash[:notice] = 'You have to enter the form !'
+      flash.now[:notice] = 'You have to enter the form !'
       render :edit
     end
   end

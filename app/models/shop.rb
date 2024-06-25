@@ -5,8 +5,8 @@ class Shop < ApplicationRecord
 
   has_one_attached :shop_image
 
-  validates :name, presence: true
-  validates :discription, presence: true
+  validates :name, presence: true, length: { maximum: 20 } 
+  validates :discription, length: { maximum: 60 }
   validates :address, presence: true
   validates :prefecture, presence: true
   

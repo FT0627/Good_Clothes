@@ -5,7 +5,7 @@
         <% if admin_signed_in? %>
           <div class="col-lg-1">
             <%= link_to admin_user_path(user.id) do %>
-              <%= image_tag user.get_profile_image(80,80), class: "align-middle rounded-circle" %>
+              <%= image_tag user.get_profile_image(100,100), class: "profile-img" %>
             <% end %>
           </div>
           <div class="col-lg-2 text-nowrap text-truncate">
@@ -33,7 +33,7 @@
         <% else %>
           <div class="col-lg-1">
             <%= link_to user_path(user.id) do %>
-              <%= image_tag user.get_profile_image(50,50), class: "rounded-circle align-middle" %>
+              <%= image_tag user.get_profile_image(100,100), class: "profile-img" %>
             <% end %>
           </div>
           <div class="col-lg-2 text-nowrap text-truncate">

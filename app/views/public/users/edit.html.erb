@@ -3,7 +3,7 @@
     <h3 class="my-3">マイページ編集</h3>
     <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
     <div class="mb-3">
-      <label>ニックネーム</label><br>
+      <label>ニックネーム(20字以下)</label><br>
       <%= f.text_field :name, autofocus: true, style: "width:50%" %>
     </div>
     <div class="mb-3">

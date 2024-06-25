@@ -3,8 +3,8 @@ class Public::HomesController < ApplicationController
   def top
     @tags = Tag.all
     @categories = Category.all
-    
-    
+
+
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @items = @tag.items.order(created_at: :desc)

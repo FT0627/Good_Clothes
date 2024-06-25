@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
     if @user == current_user
       render :edit
     else
-      flash[:alert] = "You can't edit the profile !!"
+      flash.now[:alert] = "You can't edit the profile !!"
       render :show
     end
   end
@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "You have successfully updated the profile."
       redirect_to user_path(@user)
     else
-    flash[:alert] = "You have to enter the all forms !"
+    flash.now[:alert] = "Please fill in the form appropriately."
       render :edit
     end
   end
