@@ -82,7 +82,7 @@
                 <div class="col-lg-1">
                   <% unless post_comment.user.blank? %>
                     <%= link_to admin_user_path(post_comment.user.id) do %>
-                      <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle text-decoration-none m-1" %>
+                      <%= image_tag post_comment.user.get_profile_image(100,100), class: "profile-img m-1" %>
                     <% end %>
                 </div>
                 <div class="col-lg-11 align-self-center text-nowrap text-truncate">
