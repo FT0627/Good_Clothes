@@ -13,6 +13,22 @@
   object-fit: cover; 
 }
 
+.top-post{
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.top-post-img{
+  height: 280px;
+}
+
+.top-post-img .post-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 #map {
   height: 400px;
   width: 400px;
@@ -78,5 +94,3 @@
 .user-item{
   object-fit: cover;
 }
-
-
