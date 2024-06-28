@@ -5,18 +5,19 @@
 
     <div class="col-lg-9 text-center">
       <h3 class="my-3">店内品揃えレビュー<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></h3>
-      <div class="row">
+      <div class="d-flex justify-content-center flex-wrap">
         <% @items.each do |item| %>
-        <div class="col-lg-4">
-        <div class="card m-2">
+        <div class="card  top-post">
             <div class="card-header">
               <%= link_to admin_user_path(item.user) do %>
                 <%= image_tag item.user.get_profile_image(100,100), class: "profile-img" %>
               <% end %>
             </div>
-            <%= link_to admin_item_path(item) do %>
-              <%= image_tag item.item_images[0], class: "card-img-top" %>
-            <% end %>
+            <div class="top-post-img">
+              <%= link_to admin_item_path(item) do %>
+                <%= image_tag item.item_images[0], class: "post-img" %>
+              <% end %>
+            </div>
             <div class="card-body">
               <% if item.shop.nil? %>
                 <div>※この店舗は削除されました</div>
@@ -28,7 +29,6 @@
               <%= render partial: "public/items/display_star", locals: {item: item} %>
               <%= item.created_at.strftime('%Y/%m/%d') %>時点
             </div>
-        </div>
         </div>
         <% end %>
       </div>

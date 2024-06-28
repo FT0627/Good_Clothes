@@ -35,13 +35,11 @@
 
         <div class="col-lg-8">
           <h4><strong>投稿</strong></h4>
-          <div class="row p-3 mr-3 border-top">
+          <div class="d-flex justify-content-center flex-wrap">
             <% @items.each do |item| %>
-              <div class="col-lg-5 mx-auto">
-                <%= link_to item_path(item) do %>
-                  <%= image_tag item.item_images[0], size: "200x200", class: "mb-2 btn btn-outline-light user-item" %>
-                <% end %>
-              </div>
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.item_images[0], size: "200x200", class: "btn btn-outline-light user-item" %>
+              <% end %>
             <% end %>
           </div>
           <%= paginate @items %>
