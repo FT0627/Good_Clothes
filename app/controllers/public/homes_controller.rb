@@ -3,8 +3,7 @@ class Public::HomesController < ApplicationController
   def top
     @tags = Tag.all
     @categories = Category.all
-
-
+    @colors = Color.all
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @items = @tag.items.order(created_at: :desc)
@@ -13,6 +12,9 @@ class Public::HomesController < ApplicationController
     elsif params[:category_id].present?
       @category = Category.find(params[:category_id])
       @items = @category.items.all.order(created_at: :desc)
+    elsif params[:color_id].present?
+      @color = Color.find(params[:color_id])
+      @items = @color.items.all.order(created_at: :desc)
     else
       @items = Item.all.order(created_at: :desc)
     end

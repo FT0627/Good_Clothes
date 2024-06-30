@@ -54,4 +54,31 @@
         </tbody>
       </table>
 
+      <table class="table table-bordered">
+        <thead class="sidebar-title">
+          <tr>
+            <th>
+              <i class="fa-solid fa-palette"></i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% colors.each do |color| %>
+          <tr>
+            <td>
+              <% if admin_signed_in? %>
+                <%= link_to admin_items_path(color_id: color.id) do %>
+                  <span style=" background-color: <%= color.code %>;", class= "color-box"></span>
+                <% end %>
+              <% else %>
+                <%= link_to root_path(color_id: color.id) do %>
+                  <span style=" background-color: <%= color.code %>;", class= "color-box"></span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>

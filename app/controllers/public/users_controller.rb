@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
     @items = @user.items.order(created_at: :desc).page(params[:page]).per(6)
     @tags = Tag.all
     @categories = Category.all
+    @colors = Color.all
   end
 
   def edit

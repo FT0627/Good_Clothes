@@ -26,6 +26,7 @@ class Public::ItemsController < ApplicationController
     @post_comment = PostComment.new
     @tags = Tag.all
     @categories = Category.all
+    @colors = Color.all
 
   end
 
