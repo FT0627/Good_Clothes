@@ -6,6 +6,7 @@ class Admin::UsersController < ApplicationController
     @items = @user.items.order('id DESC').limit(4)
     @tags = Tag.all
     @categories = Category.all
+    @colors = Color.all
   end
 
   def destroy

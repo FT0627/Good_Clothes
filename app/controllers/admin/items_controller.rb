@@ -4,6 +4,7 @@ class Admin::ItemsController < ApplicationController
   def index
     @tags = Tag.all
     @categories = Category.all
+    @colors = Color.all
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @items = @tag.items
@@ -12,6 +13,9 @@ class Admin::ItemsController < ApplicationController
     elsif params[:category_id].present?
       @category = Category.find(params[:category_id])
       @items = @category.items.all.order(created_at: :desc)
+    elsif params[:color_id].present?
+      @color = Color.find(params[:color_id])
+      @items = @color.items.all.order(created_at: :desc)
     else
       @items = Item.all.order(created_at: :desc)
     end
@@ -23,6 +27,7 @@ class Admin::ItemsController < ApplicationController
     @post_comment = PostComment.new
     @tags = Tag.all
     @categories = Category.all
+    @colors = Color.all
   end
 
   def destroy

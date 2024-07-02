@@ -8,7 +8,7 @@ class Admin::ColorsController < ApplicationController
       redirect_to admin_colors_path
     else
       @colors = Color.all
-      flash.now[:alert] = "You have to enter the all forms!"
+      flash.now[:alert] = "Please fill in the form appropriately."
       render :index
     end
   end

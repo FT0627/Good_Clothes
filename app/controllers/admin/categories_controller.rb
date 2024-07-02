@@ -12,7 +12,7 @@ class Admin::CategoriesController < ApplicationController
     flash[:notice] = 'You have successfully posted the new category.'
       redirect_to admin_categories_path
     else
-      flash.now[:alert]= "You have to enter the form !"
+      flash.now[:alert]= "Please fill in the form appropriately."
       @categories = Category.all
       render :index
     end
