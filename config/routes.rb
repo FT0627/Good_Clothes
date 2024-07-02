@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :show, :destroy, :update, :edit] do
       resources :post_comments, only: [:create, :destroy]
     end
+    get "items" => "items#new"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

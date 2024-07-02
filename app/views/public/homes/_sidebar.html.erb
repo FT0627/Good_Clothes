@@ -11,8 +11,8 @@
         <tbody>
           <tr>
             <td>
-              <% tags.each do |tag| %>
               <div class="tag-content d-flex flex-wrap">
+              <% tags.each do |tag| %>
                 <% if tag.items.present? %>
                     <i class="fa-solid fa-hashtag">
                       <% if admin_signed_in? %>

@@ -1,4 +1,14 @@
 <div class="container main-content py-5">
+  <div class="ml-2">
+    <% if @shop.errors.any? %>
+      <%= @shop.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @shop.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
   <div class="card w-75 mx-auto my-4 shadow-lg text-center">
   <h2 class="p-3"><strong>店舗登録</strong></h2>
   

@@ -15,7 +15,7 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash.now[:alert] = "You have to enter the all forms"
+      flash.now[:alert] = "You have to enter the all forms."
       render :new
     end
   end
