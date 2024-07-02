@@ -27,7 +27,6 @@ class Public::ItemsController < ApplicationController
     @tags = Tag.all
     @categories = Category.all
     @colors = Color.all
-
   end
 
   def edit

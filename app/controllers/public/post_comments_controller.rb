@@ -11,7 +11,7 @@ class Public::PostCommentsController < ApplicationController
       redirect_to item_path(item)
     else 
       flash[:alert] = "You failed to post your comment."
-    　redirect_to item_path(item)
+      redirect_to item_path(item)
     end
   end
 
