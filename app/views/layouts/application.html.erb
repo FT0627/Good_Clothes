@@ -12,12 +12,12 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="sticky-top ">
+    <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
         <% if user_signed_in? %>
           <%= link_to root_path do %>
-            <div class="navbar-brand p-3">
+            <div class="navbar-brand">
               <label>Good_Clothes</label>
               <i class="fa-solid fa-shirt"></i>
             </div>
@@ -88,12 +88,14 @@
         </div>
       </nav>
     </header>
-    <main class="mb-auto">
-  　  <% flash.each do |message_type, message| %>
-  　    <div class= "flash-message <%= message_type %>"><%= message %></div>
-  　  <% end %>
+    
+    <main class="mb-auto bg-dark">
+   　  <% flash.each do |message_type, message| %>
+  　     <div class= "flash-message <%= message_type %>"><%= message %></div>
+   　  <% end %>
       <%= yield %>
     </main>
+    
     <footer class="bg-dark text-white pt-5 pb-4 sticky-bottom">
       <div class="container">
         <div class="row no-gutters">
