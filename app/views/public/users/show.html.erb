@@ -34,11 +34,14 @@
         </div>
 
         <div class="col-lg-8">
-          <h4><strong>投稿</strong></h4>
           <div class="d-flex justify-content-center flex-wrap">
             <% @items.each do |item| %>
-              <%= link_to item_path(item) do %>
-                <%= image_tag item.item_images[0], size: "200x200", class: "btn btn-outline-light user-item" %>
+              <% if item.nil? %>
+                <h5>まだ投稿はありません</h5>
+              <% else %>
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.item_images[0], size: "200x200", class: "btn btn-outline-secondary user-item" %>
+                <% end %>
               <% end %>
             <% end %>
           </div>
