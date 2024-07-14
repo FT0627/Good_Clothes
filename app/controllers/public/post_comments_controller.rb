@@ -7,10 +7,10 @@ class Public::PostCommentsController < ApplicationController
     comment.item_id = item.id
     
     if comment.save
-      flash[:notice] = "You have successfully posted your comment."
+      flash[:notice] = "コメントに成功しました。"
       redirect_to item_path(item)
     else 
-      flash[:alert] = "You failed to post your comment."
+      flash[:alert] = "コメントに失敗しました。"
       redirect_to item_path(item)
     end
   end
@@ -23,10 +23,10 @@ class Public::PostCommentsController < ApplicationController
     
     if user_id == current_user.id || post_user_id = current_user.id
       comment.destroy
-      flash[:notice] = "You have successfully deleted your comment."
+      flash[:notice] = "削除に成功しました。"
       redirect_to item_path(item)
     else
-      flash[:alert] = "You failed to delete the comment."
+      flash[:alert] = "削除に失敗しました。"
       redirect_to item_path(item)
     end
   end

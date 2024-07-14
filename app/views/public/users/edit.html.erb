@@ -1,14 +1,18 @@
 <div class="container main-content">
+  <% if @user.errors.any? %>
+    <%= @user.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="card w-75 mx-auto my-4 shadow-lg text-center">
     <h3 class="my-3">マイページ編集</h3>
     <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
     <div class="mb-3">
       <label>ニックネーム(20字以下)</label><br>
       <%= f.text_field :name, autofocus: true, style: "width:50%" %>
-    </div>
-    <div class="mb-3">
-      <label>メールアドレス</label><br>
-      <%= f.email_field :email, autofocus: true, style: "width:50%" %>
     </div>
     <div class="mb-3">
       <label>プロフィール画像</label><br>

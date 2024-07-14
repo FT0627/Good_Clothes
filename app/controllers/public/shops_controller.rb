@@ -9,10 +9,10 @@ class Public::ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     @shop.user_id = current_user.id
     if @shop.save
-      flash[:notice] = "You could register the new shop."
+      flash[:notice] = "店舗情報の登録に成功しました。"
       redirect_to shop_path(@shop)
     else
-      flash.now[:alert] = "Please fill in the form appropriately."
+      flash.now[:alert] = "登録に失敗しました。"
       render :new
     end
   end
@@ -31,7 +31,7 @@ class Public::ShopsController < ApplicationController
     if @shop.user == current_user
       render :edit
     else
-      flash.now[:alert] = "You can't edit this shop !"
+      flash.now[:alert] = "この店舗情報は編集できません。"
       render :show
     end
   end
@@ -39,19 +39,22 @@ class Public::ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
-      flash[:notice] = "You have successfully updated the shop information."
+      flash[:notice] = "店舗情報の更新に成功しました。"
       redirect_to shop_path(@shop)
     else
-      flash.now[:alert] = "Please fill in the form appropriately."
+      flash.now[:alert] = "更新に失敗しました。"
       render :edit
     end
   end
 
   def destroy
     shop = Shop.find(params[:id])
-    shop.destroy
-    flash[:notice] = "You have successfully delete the shop !"
-    redirect_to shops_path
+    if shop.destroy
+      flash[:notice] = "店舗情報の削除に成功しました。"
+      redirect_to shops_path
+    else
+      flash[:alert] = "削除に失敗しました。"
+    end
   end
 
   private

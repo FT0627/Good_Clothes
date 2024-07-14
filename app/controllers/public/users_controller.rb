@@ -15,7 +15,7 @@ class Public::UsersController < ApplicationController
     if @user == current_user
       render :edit
     else
-      flash.now[:alert] = "You can't edit the profile !!"
+      flash.now[:alert] = "このユーザー情報は編集できません。"
       render :show
     end
   end
@@ -23,19 +23,23 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-    flash[:notice] = "You have successfully updated the profile."
+    flash[:notice] = "ユーザー情報の更新に成功しました。"
       redirect_to user_path(@user)
     else
-    flash.now[:alert] = "Please fill in the form appropriately."
+    flash.now[:alert] = "更新に失敗しました。"
       render :edit
     end
   end
 
   def destroy
     @user = User.find(current_user.id)
-    @user.destroy
-    flash[:notice] = "You have successfully deleted the account."
-    redirect_to root_path
+    if @user.destroy
+      flash[:notice] = "アカウント削除に成功しました。"
+      redirect_to root_path
+    else
+      flash[:alert] = "削除に失敗しました。"
+      render :edit
+    end
   end
 
   private
@@ -47,7 +51,7 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(current_user.id)
     if @user.guest_user?
-      redirect_to root_path, alert: "Guesst user can't the profile!!"
+      redirect_to root_path, alert: "ゲストユーザーはマイページの編集はできません。"
     end
   end
 end

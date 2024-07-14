@@ -4,7 +4,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   def after_sign_up_path_for(resource)
-    flash[:notice] = "Thanks for making account!"
+    flash[:notice] = "アカウントを作成に成功しました。"
     current_user
     # マイページに変更
   end

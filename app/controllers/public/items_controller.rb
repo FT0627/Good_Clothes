@@ -11,11 +11,11 @@ class Public::ItemsController < ApplicationController
     @item.user_id = current_user.id
     tag_list = params[:item][:name].split(',')
     if @item.save
-      flash[:notice] = "You have successfully created the new post."
+      flash[:notice] = "投稿に成功しました。"
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash.now[:alert] = "You have to enter the all forms."
+      flash.now[:alert] = "投稿できませんでした。"
       render :new
     end
   end
@@ -40,7 +40,7 @@ class Public::ItemsController < ApplicationController
       @categories = Category.all
       @tags = Tag.all
       @tag = @item.tags
-      flash.now[:alert] = "You can't edit the post!!"
+      flash.now[:alert] = "この投稿は編集できません。"
       render :show
     end
   end
@@ -49,20 +49,24 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     tag_list = params[:item][:name].split(',')
     if @item.update(item_params)
-      flash[:notice] = "You have successfully updated the post."
+      flash[:notice] = "投稿の編集に成功しました。"
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash.now[:alert] = "You have to enter the forms !"
+      flash.now[:alert] = "編集に失敗しました。"
       render :edit
     end
   end
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    flash[:notice] = "You have successfully deleted the post."
-    redirect_to root_path
+    if item.destroy
+      flash[:notice] = "投稿の削除に失敗しました。"
+      redirect_to root_path
+    else
+      flash[:alert] = "削除に失敗しました。"
+      render :edit
+    end
   end
 
   private
