@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = @user.items.order('id DESC').limit(4)
+    @items = @user.items.order(created_at: :desc).page(params[:page]).per(6)
     @tags = Tag.all
     @categories = Category.all
     @colors = Color.all

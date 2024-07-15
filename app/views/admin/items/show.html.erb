@@ -5,7 +5,7 @@
     <%= render partial: "public/homes/sidebar", locals: {tags: @tags, categories: @categories, colors: @colors} %>
     <div class="col-lg-9 mt-3">
       <div class="row d-flex justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-lg-5 d-flex align-items-center mb-3">
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-touch="false", data-interval="false">
             <div class="carousel-inner">
               <% @item.item_images.each_with_index do |item_image, index| %>
@@ -24,7 +24,7 @@
             </a>
           </div>
         </div>
-        <div class="col-lg-5 p-3 border border-dark post_detail">
+        <div class="col-lg-5 mb-3 py-3">
           <table class="table">
             <caption>☆<%= @item.created_at.strftime('%Y/%m/%d') %> 時点のレビュー☆</caption>
               <tr>

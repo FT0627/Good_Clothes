@@ -37,13 +37,18 @@
         </div>
 
         <div class="col-lg-8">
-          <div class="d-flex justify-content-center flex-wrap">
-            <% @user.items.each do |item| %>
-              <%= link_to admin_item_path(item) do %>
-               <%= image_tag item.item_images[0], size: "200x200", class: "btn btn-outline-light user-item" %>
-              <% end %>
-            <% end %>
+          <% if @user.items.present? %>
+           <div class="d-flex justify-content-center flex-wrap">
+             <% @items.each do |item| %>
+               <%= link_to admin_item_path(item) do %>
+                 <%= image_tag item.item_images[0], size: "200x200", class: "btn btn-outline-light user-item" %>
+               <% end %>
+             <% end %>
+             <%= paginate @items %>
           </div>
+          <% else %>
+           <h4 class="text-center mt-3">まだ投稿はありません。</h4>
+          <% end %>
         </div>
 
       </div>

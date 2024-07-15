@@ -34,18 +34,18 @@
         </div>
 
         <div class="col-lg-8">
-          <div class="d-flex justify-content-center flex-wrap">
-            <% @items.each do |item| %>
-              <% if item.nil? %>
-                <h5>まだ投稿はありません</h5>
-              <% else %>
+          <% if @user.items.present? %>
+            <div class="d-flex justify-content-center flex-wrap">
+              <% @items.each do |item| %>
                 <%= link_to item_path(item) do %>
                   <%= image_tag item.item_images[0], size: "200x200", class: "btn btn-outline-secondary user-item" %>
                 <% end %>
               <% end %>
-            <% end %>
-          </div>
-          <%= paginate @items %>
+              <%= paginate @items %>
+            </div>
+          <% else %>
+            <h4 class="text-center mt-3">まだ投稿はありません。</h4>    
+          <% end %>
         </div>
 
       </div>
