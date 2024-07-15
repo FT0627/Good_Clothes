@@ -64,7 +64,7 @@ class Public::ItemsController < ApplicationController
       flash[:notice] = "投稿の削除に失敗しました。"
       redirect_to root_path
     else
-      flash[:alert] = "削除に失敗しました。"
+      flash.now[:alert] = "削除に失敗しました。"
       render :edit
     end
   end

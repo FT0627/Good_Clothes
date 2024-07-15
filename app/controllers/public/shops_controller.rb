@@ -53,7 +53,8 @@ class Public::ShopsController < ApplicationController
       flash[:notice] = "店舗情報の削除に成功しました。"
       redirect_to shops_path
     else
-      flash[:alert] = "削除に失敗しました。"
+      flash.now[:alert] = "削除に失敗しました。"
+      render :edit
     end
   end
 

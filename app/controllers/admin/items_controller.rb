@@ -32,8 +32,12 @@ class Admin::ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    flash[:notice] = 'You have successfully deleted the item.'
-    redirect_to admin_user_path(item.user.id)
+    if item.destroy
+      flash[:notice] = '投稿の削除に成功しました。'
+      redirect_to admin_user_path(item.user.id)
+    else
+      flash.now[:alert] = '投稿の削除に失敗しました。'
+      render :show
+    end
   end
 end

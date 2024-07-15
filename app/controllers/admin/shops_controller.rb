@@ -16,16 +16,24 @@ class Admin::ShopsController < ApplicationController
 
   def update
     @shop = Shop.find(params[:id])
-    @shop.update(shop_params)
-    flash[:notice] = "You have successfully updated the shop information."
-    redirect_to admin_shop_path(@shop)
+    if @shop.update(shop_params)
+      flash[:notice] = "店情報の更新に成功しました。"
+      redirect_to admin_shop_path(@shop)
+    else
+      flash.now[:alert] = "店情報の更新に失敗しました。"
+      render :edit
+    end
   end
 
   def destroy
     @shop = Shop.find(params[:id])
-    @shop.destroy
-    flash[:notice] = "You have successfully deleted the shop."
-    redirect_to admin_shops_path
+    if @shop.destroy
+      flash[:notice] = "店情報の削除に成功しました。"
+      redirect_to admin_shops_path
+    else
+      flash.now[:alert] = "店情報の削除に失敗しました。"  
+      render :edit
+    end
   end
 
   private

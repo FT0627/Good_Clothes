@@ -23,10 +23,10 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-    flash[:notice] = "ユーザー情報の更新に成功しました。"
+      flash[:notice] = "ユーザー情報の更新に成功しました。"
       redirect_to user_path(@user)
     else
-    flash.now[:alert] = "更新に失敗しました。"
+      flash.now[:alert] = "更新に失敗しました。"
       render :edit
     end
   end
@@ -37,8 +37,8 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "アカウント削除に成功しました。"
       redirect_to root_path
     else
-      flash[:alert] = "削除に失敗しました。"
-      render :edit
+      flash.now[:alert] = "削除に失敗しました。"
+      render :show
     end
   end
 

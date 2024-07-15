@@ -9,11 +9,11 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-    flash[:notice] = 'You have successfully posted the new category.'
+      flash[:notice] = 'カテゴリーの登録に成功しました。'
       redirect_to admin_categories_path
     else
-      flash.now[:alert]= "Please fill in the form appropriately."
       @categories = Category.all
+      flash.now[:alert]= "カテゴリーの登録に失敗しました。"
       render :index
     end
   end
@@ -25,19 +25,23 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      flash[:notice] = 'You have successfully updated the shop information.'
+      flash[:notice] = 'カテゴリー情報の更新に成功しました。'
       redirect_to admin_categories_path
     else
-      flash.now[:notice] = 'You have to enter the form !'
+      flash.now[:notice] = 'カテゴリー情報の更新に失敗しました。'
       render :edit
     end
   end
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
-    flash[:notice] = 'You have successfully deleted the category.'
-    redirect_to admin_categories_path
+    if @category.destroy
+      flash[:notice] = 'カテゴリー情報の削除に成功しました。'
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = 'カテゴリー情報の削除に失敗しました。'
+      render :index
+    end
   end
 
   private

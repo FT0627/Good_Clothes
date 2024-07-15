@@ -12,10 +12,11 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = "You have successfully deleted the user."
+      flash[:notice] = "ユーザー情報の削除に成功しました。"
       redirect_to admin_root_path
     else
-      render :show
+      flash.now[:alert] = "ユーザー情報の削除に失敗しました。"
+      redirect_to admin_user_path(@user)
     end
   end
 

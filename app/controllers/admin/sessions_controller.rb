@@ -3,12 +3,12 @@
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   def after_sign_in_path_for(resource)
-    flash[:notice] = 'You are logged in as an administrator.'
+    flash[:notice] = '管理者としてログインしました。'
     admin_root_path
   end
   
   def after_sign_out_path_for(resource)
-    flash[:notice] = 'You are logged out.'
+    flash[:notice] = '管理者画面からログアウトしました。'
     new_admin_session_path
   end
   # GET /resource/sign_in

@@ -4,11 +4,11 @@ class Admin::ColorsController < ApplicationController
   def create
     @color = Color.new(color_params)
     if @color.save
-      flash[:notice] = 'You have successfully created the new color.'
+      flash[:notice] = 'カラーの登録に成功しました。'
       redirect_to admin_colors_path
     else
       @colors = Color.all
-      flash.now[:alert] = "Please fill in the form appropriately."
+      flash.now[:alert] = "カラーの登録に失敗しました。"
       render :index
     end
   end
@@ -25,19 +25,23 @@ class Admin::ColorsController < ApplicationController
   def update
     color = Color.find(params[:id])
     if color.update(color_params)
-      flash[:notice] = 'You have successfully updated the color information.'
+      flash[:notice] = 'カラー情報の更新に成功しました。'
       redirect_to admin_colors_path
     else
-      flash.now[:alert] = 'You have to enter the all forms !'
+      flash.now[:alert] = 'カラー情報の更新に失敗しました。'
       render :edit
     end
   end
 
   def destroy
     @color = Color.find(params[:id])
-    @color.destroy
-    flash[:notice] = 'You have successfully deleted the color.'
-    redirect_to admin_colors_path
+    if @color.destroy
+      flash[:notice] = 'カラー情報の削除に成功しました。'
+      redirect_to admin_colors_path
+    else
+      flash.now[:alert] = 'カラー情報の削除に失敗しました。'
+      render :index
+    end
   end
 
   private
