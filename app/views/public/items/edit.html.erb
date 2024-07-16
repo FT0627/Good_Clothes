@@ -10,12 +10,12 @@
     <% end %>
   </div>
   <div class="card w-75 mx-auto my-4 shadow-lg text-center">
-  <h2 class="p-3"><strong>投稿</strong></h2>
+  <h2 class="p-3"><strong>投稿編集</strong></h2>
 
   <%= render partial: 'form',  locals: {item: @item, colors: @colors, tag_list: @tag_list} %>
 
   <div>
-    <%= link_to "削除", item_path(@item), method: :delete, data: {confirm: "本当にこの投稿を削除しますか？"}, class: "btn btn-danger" %>
+    <%= link_to "削除", item_path(@item), method: :delete, data: {confirm: "本当にこの投稿を削除しますか？"}, class: "btn btn-danger mb-1" %>
   </div>
   </div>
 </div>

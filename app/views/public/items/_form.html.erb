@@ -1,15 +1,9 @@
-  <%= form_with model: @item do |f| %>
-    <% if item.id.nil? %>
-      <div class="form_group mb-3" id="star">
-        <%= f.label :star, "今回の評価" %>
-        <%= hidden_field :star, id: :review_star, class: "form_control" %>
-        <div id="post_raty"></div>
-      </div>
-    <% else %>
-      <div class="form_group mb-3">
-        <%= render partial: "display_star", locals: {item: @item} %>
-      </div>
-    <% end %>
+  <%= form_with model: @item, local: true do |f| %>
+    <div class="form_group mb-3" id="star">
+      <%= f.label :star, "今回の評価" %>
+      <%= f.hidden_field :star, id: :review_star, class: "form_control" %>
+      <div id="post_raty"></div>
+    </div>
 
     <div class="form_group mb-3">
       <%= f.label :shop_id, "店舗" %><br>
