@@ -41,8 +41,8 @@
                   <%= image_tag item.item_images[0], size: "200x200", class: "btn btn-outline-secondary user-item" %>
                 <% end %>
               <% end %>
-              <%= paginate @items %>
             </div>
+            <%= paginate @items %>
           <% else %>
             <h4 class="text-center mt-3">まだ投稿はありません。</h4>    
           <% end %>

@@ -31,12 +31,12 @@ class Public::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @colors = Color.all
     @tag_list = @item.tags.pluck(:name).join(',')
     if @item.user == current_user
       render :edit
     else
       @post_comment = PostComment.new
+      @colors = Color.all
       @categories = Category.all
       @tags = Tag.all
       @tag = @item.tags
@@ -53,7 +53,7 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item)
     else
-      flash.now[:alert] = "編集に失敗しました。"
+      flash.now[:alert] = "投稿内容の更新に失敗しました。"
       render :edit
     end
   end

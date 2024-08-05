@@ -94,6 +94,11 @@
   　     <div class= "flash-message <%= message_type %>"><%= message %></div>
    　  <% end %>
       <%= yield %>
+      <span id="back">
+        <a href="#">
+          <%= image_tag asset_path('arrow.png'), data: {"turbolinks" => false},class: "arrow" %> 
+        </a>
+      </span>
     </main>
     
     <footer class="bg-dark text-white pt-5 pb-4 sticky-bottom">
@@ -115,3 +120,5 @@
     </footer>
   </body>
 </html>
+
+<%= javascript_pack_tag 'arrow', 'data-turbolinks-track': 'reload' %>
