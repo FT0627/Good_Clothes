@@ -15,16 +15,16 @@
     <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-        <% if user_signed_in? %>
-          <%= link_to root_path do %>
-            <div class="navbar-brand">
+        <% if admin_signed_in? %>
+          <%= link_to admin_root_path do %>
+            <div class="navbar-brand p-3">
               <label>Good_Clothes</label>
               <i class="fa-solid fa-shirt"></i>
             </div>
           <% end %>
         <% else %>
-          <%= link_to admin_root_path do %>
-            <div class="navbar-brand p-3">
+          <%= link_to root_path do %>
+            <div class="navbar-brand">
               <label>Good_Clothes</label>
               <i class="fa-solid fa-shirt"></i>
             </div>
@@ -120,5 +120,3 @@
     </footer>
   </body>
 </html>
-
-<%= javascript_pack_tag 'arrow', 'data-turbolinks-track': 'reload' %>
