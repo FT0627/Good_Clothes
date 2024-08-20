@@ -26,6 +26,11 @@
                   <%= @user.followers.count %>
                 <% end %>
               </li>
+              <li class="list-group-item">
+                <div class="mr-3">
+                  <%= link_to "お気に入りショップ", favorites_user_path(@user) %>
+                </div>
+              </li>
             </ul>
             <div class="card-body">
               <%= render partial: "public/relationships/btn", locals: {user: @user} %>
