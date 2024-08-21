@@ -1,13 +1,28 @@
-<div class="container">
-  <table class="table">
-    <tbody>
-      <% @favorite_shops.each do |shop| %>
-      <tr>
-        <td>
-          <%= link_to shop.name, shop_path(shop) %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<%= render partial: "user_info", locals: {user: @user} %>
+
+<div class="container main-content pt-3">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h5><strong>お気に入りショップ</strong></h5>
+      <table class="table table-border">
+        <tbody>
+          <% @favorite_shops.each do |shop| %>
+          <tr class="text-nowrap text-truncate">
+            <td class="align-middle">
+              <%= link_to user_path(@user) do %>
+                <%= image_tag shop.user.get_profile_image(100, 100), class: "profile-img" %>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <%= shop.prefecture %>
+            </td>
+            <td class="align-middle">
+              <%= link_to shop.name, shop_path(shop) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
