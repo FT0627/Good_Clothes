@@ -1,11 +1,9 @@
-<% if user_signed_in? %>
   <% if current_user != user %>
     <% if current_user.following?(user) %>
-      <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class: "badge badge-primary" %>
+      <%= link_to "フォロー中", user_relationships_path(user), method: :delete, remote: true, data: {"turbolinks" => false} , class: "badge badge-primary" %>
     <% else %>
-      <%= link_to "フォロー", user_relationships_path(user.id), method: :post, class: "badge badge-info" %>
+      <%= link_to "フォロー", user_relationships_path(user), method: :post, remote: true, data: {"turbolinks" => false} , class: "badge badge-info" %>
     <% end %>
   <% else %>
     <%= link_to "マイページ編集", edit_user_path(user.id), class: "btn btn-outline-dark btn-sm" %>
   <% end %>
-<% end %>
