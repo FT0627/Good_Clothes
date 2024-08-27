@@ -6,7 +6,7 @@
 
   function initMap(){
     geocoder = new google.maps.Geocoder()
-    var test ={lat: <%= shop.latitude %>, lng: <%= shop.longitude %>};
+    var test ={lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
 
     map = new google.maps.Map(document.getElementById('map'), {
       center: test,
@@ -16,7 +16,7 @@
       streetViewControl: false
     });
 
-    var contentString = '住所：<%= shop.full_address %>';
+    var contentString = '住所：<%= @shop.full_address %>';
 
     infowindow = new google.maps.InfoWindow({
       content: contentString
