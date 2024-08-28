@@ -33,7 +33,7 @@
                   <% if @item.shop.nil? %>
                     <h4>※店舗情報は削除されました</h4>
                   <% else %>
-                    <h2><strong><%= link_to @item.shop.name, shop_path(@item.shop_id), class: "text-dark" %></strong></h2>
+                    <h2><strong><%= link_to @item.shop.name, shop_path(@item.shop_id), 'data-turbolinks': false, class: "text-dark" %></strong></h2>
                   <% end %>
                 </td>
               </tr>
