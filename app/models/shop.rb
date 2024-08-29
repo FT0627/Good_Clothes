@@ -42,7 +42,7 @@ class Shop < ApplicationRecord
    def full_address
      [prefecture, address].compact.join(' ')
    end
-   
+
    def favorited_by?(user)
      favorites.exists?(user_id: user.id)
    end

@@ -3,26 +3,30 @@
 <div class="container main-content pt-3">
   <div class="row">
     <div class="col-lg-6 mx-auto">
-      <h5><strong>お気に入りショップ</strong></h5>
-      <table class="table table-border">
-        <tbody>
-          <% @favorite_shops.each do |shop| %>
-          <tr class="text-nowrap text-truncate">
-            <td class="align-middle">
-              <%= link_to user_path(@user) do %>
-                <%= image_tag shop.user.get_profile_image(100, 100), class: "profile-img" %>
-              <% end %>
-            </td>
-            <td class="align-middle">
-              <%= shop.prefecture %>
-            </td>
-            <td class="align-middle">
-              <%= link_to shop.name, shop_path(shop) %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <h3><strong>お気に入りショップ</strong></h3>
+      <% if @favorite_shops.blank? %>
+        <h5 class="mt-3">現在お気に入りショップはありません。</h5>
+      <% else %>
+        <table class="table table-border">
+          <tbody>
+            <% @favorite_shops.each do |shop| %>
+            <tr class="text-nowrap text-truncate">
+              <td class="align-middle">
+                <%= link_to user_path(@user) do %>
+                  <%= image_tag shop.user.get_profile_image(100, 100), class: "profile-img" %>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= shop.prefecture %>
+              </td>
+              <td class="align-middle">
+                <%= link_to shop.name, shop_path(shop) %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
