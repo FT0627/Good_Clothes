@@ -12,11 +12,9 @@
               <%= link_to user_path(item.user) do %>
                 <%= image_tag item.user.get_profile_image(100,100), class: "profile-img" %>
               <% end %>
-              <% if user_signed_in? %>
               <span id = "ajax">
                 <%= render partial: "public/relationships/btn", locals: {user: item.user} %>
               </span>
-              <% end %>
             </div>
             <div class="top-post-img">
               <%= link_to item_path(item) do %>
