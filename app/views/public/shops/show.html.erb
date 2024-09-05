@@ -12,7 +12,7 @@
   <div class="row d-flex justify-content-center">
     <div class="col-lg-5 p-3 mb-3 text-center shop-detail">
       <%= image_tag @shop.get_shop_image(350,350) %>
-      <div>
+      <div id ="favorite-ajax">
         <%= render partial: "favorite", locals: {shop: @shop} %>
       </div>
       <table class="table">

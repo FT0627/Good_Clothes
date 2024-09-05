@@ -1,8 +1,6 @@
 <div class="container main-content">
   <div class="row">
-    
     <%= render partial: "sidebar", locals: {tags: @tags, categories: @categories, colors: @colors} %>
-    
     <div class="col-lg-9 text-center">
       <h3 class="my-3">店内品揃えレビュー<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></h3>
       <div class="d-flex justify-content-center flex-wrap">
@@ -12,7 +10,7 @@
               <%= link_to user_path(item.user) do %>
                 <%= image_tag item.user.get_profile_image(100,100), class: "profile-img" %>
               <% end %>
-              <span id = "ajax">
+              <span>
                 <%= render partial: "public/relationships/btn", locals: {user: item.user} %>
               </span>
             </div>
@@ -35,6 +33,6 @@
         <% end %>
       </div>
     </div>
-    
+
   </div>
 </div>
