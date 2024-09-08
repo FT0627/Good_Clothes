@@ -6,7 +6,11 @@
       <div>
         <h5><strong>フォロワー</strong></h5>
       </div>
-      <%= render partial: "list", locals: {user: @users} %>
+      <% if @user.followers.blank? %>
+      <h5>誰からもフォローされていません。</h5>
+      <% else %>
+        <%= render partial: "list", locals: {users: @users} %>
+      <% end %>
     </div>
   </div>
 </div>

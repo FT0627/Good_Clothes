@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_many :shops, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  has_many :fans, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :favorite_users, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :my_fans, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :followings, through: :fans, source: :followed
+  has_many :followings, through: :favorite_users, source: :followed
   has_many :followers, through: :my_fans, source: :follower
 
   has_one_attached :profile_image
@@ -44,11 +44,11 @@ class User < ApplicationRecord
 
   #フォロー機能
   def follow(user)
-    fans.create(followed_id: user.id)
+    favorite_users.create(followed_id: user.id)
   end
 
   def unfollow(user)
-    fans.find_by(followed_id: user.id).destroy
+    favorite_users.find_by(followed_id: user.id).destroy
   end
 
   def following?(user)

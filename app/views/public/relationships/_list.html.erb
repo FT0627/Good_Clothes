@@ -1,5 +1,5 @@
       <table class="table">
-        <% user.each do |user| %>
+        <% users.each do |user| %>
         <tr class="text-nowrap text-truncate">
           <td class="align-middle">
             <%= link_to user_path(user) do %>
@@ -15,12 +15,9 @@
           <td class="align-middle">
             フォロワー：<%= link_to user.followers.count, user_followers_path(user) %>
           </td>
-          <td class="align-middle">
-            <%= render partial: "btn", locals: {user: user} %>
-          </td>
-        </tr>
+          </tr>
         <% end %>
       </table>
       <div class="float-right">
-        <%= paginate @users %>
+        <%= paginate users %>
       </div>
